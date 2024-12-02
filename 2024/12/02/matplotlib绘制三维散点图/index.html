@@ -17,20 +17,23 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
   
-  <title>About Me - HeX's Blog</title>
+  <title>matplotlib绘制三维散点图，并添加包围椭球及各维度核密度 - HeX's Blog</title>
 
   
-    <meta name="description" content="This is He Xiao&#39;s personal blog">
+    <meta name="description" content="背景我们在绘制三维散点时经常需要在一张图中描述：1.散点在空间中的分布状态；2.散点在空间不同维度的分布情况。下面介绍一种：通过椭球描述散点在空间中的分布状态，并通过核密度曲线描述散点在空间不同维度的分布情况的方法。 实现导入必要的库，数据准备import matplotlib.pyplot as pltimport numpy as npfrom scipy.stats import gauss">
 <meta property="og:type" content="article">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="https://hexiao2001.github.io/2024/12/02/Me/index.html">
+<meta property="og:title" content="matplotlib绘制三维散点图，并添加包围椭球及各维度核密度">
+<meta property="og:url" content="https://hexiao2001.github.io/2024/12/02/matplotlib%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E6%95%A3%E7%82%B9%E5%9B%BE/index.html">
 <meta property="og:site_name" content="HeX&#39;s Blog">
-<meta property="og:description" content="This is He Xiao&#39;s personal blog">
+<meta property="og:description" content="背景我们在绘制三维散点时经常需要在一张图中描述：1.散点在空间中的分布状态；2.散点在空间不同维度的分布情况。下面介绍一种：通过椭球描述散点在空间中的分布状态，并通过核密度曲线描述散点在空间不同维度的分布情况的方法。 实现导入必要的库，数据准备import matplotlib.pyplot as pltimport numpy as npfrom scipy.stats import gauss">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-12-02T12:42:24.000Z">
-<meta property="article:modified_time" content="2024-12-02T12:48:31.039Z">
+<meta property="og:image" content="https://hexiao2001.github.io/source_posts%5CHX20241202matplotlib%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E6%95%A3%E7%82%B9%E5%9B%BE%5Cb977a51c2d8cfcc38d04f1639cc1e9d0.png">
+<meta property="og:image" content="https://hexiao2001.github.io/source_posts%5CHX20241202matplotlib%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E6%95%A3%E7%82%B9%E5%9B%BE%5C0ccabe440fb398077aafa7c003f7fcf1.png">
+<meta property="article:published_time" content="2024-12-02T13:22:59.000Z">
+<meta property="article:modified_time" content="2024-12-02T13:28:51.295Z">
 <meta property="article:author" content="He Xiao">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hexiao2001.github.io/source_posts%5CHX20241202matplotlib%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E6%95%A3%E7%82%B9%E5%9B%BE%5Cb977a51c2d8cfcc38d04f1639cc1e9d0.png">
   
   
   
@@ -78,18 +81,54 @@
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">Posted on: <time datetime="2024-12-02T12:42:24.000Z">2024-12-02</time></span><span class="sep updated"></span><span class="text updated">Updated on: <time datetime="2024-12-02T12:48:31.039Z">2024-12-02</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">Posted on: <time datetime="2024-12-02T13:22:59.000Z">2024-12-02</time></span><span class="sep updated"></span><span class="text updated">Updated on: <time datetime="2024-12-02T13:28:51.295Z">2024-12-02</time></span></div></div></div>
     
     <div class="bottom only-title">
       
       <div class="text-area">
-        <h1 class="text title"><span>About Me</span></h1>
+        <h1 class="text title"><span>matplotlib绘制三维散点图，并添加包围椭球及各维度核密度</span></h1>
         
       </div>
     </div>
     
   </div>
-  </div><article class="md-text content">
+  </div><article class="md-text content"><h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>我们在绘制三维散点时经常需要在一张图中描述：1.散点在空间中的分布状态；2.散点在空间不同维度的分布情况。<br>下面介绍一种：通过椭球描述散点在空间中的分布状态，并通过核密度曲线描述散点在空间不同维度的分布情况的方法。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>导入必要的库，数据准备<br>import matplotlib.pyplot as plt<br>import numpy as np<br>from scipy.stats import gaussian_kde  # 导入高斯核函数</p>
+<h1 id="创建3D图"><a href="#创建3D图" class="headerlink" title="创建3D图"></a>创建3D图</h1><p>ax &#x3D; plt.figure().add_subplot(projection&#x3D;’3d’)<br>data&#x3D;[]</p>
+<h1 id="随机生成data"><a href="#随机生成data" class="headerlink" title="随机生成data"></a>随机生成data</h1><p>定义一个函数来生成数据<br>def generate_data(mean, std_dev):<br>    return np.random.normal(mean, std_dev, 100)<br>data.append(generate_data(0.8, 0.1))<br>data.append(generate_data(15, 2))<br>data.append(generate_data(60, 10))</p>
+<h1 id="显示散点图的包围椭球"><a href="#显示散点图的包围椭球" class="headerlink" title="显示散点图的包围椭球"></a>显示散点图的包围椭球</h1><p>matplotlib中需要构造点阵以显示面，因此我们需要首先生成椭球面的XYZ坐标，然后绘制</p>
+<p>def draw_ellipsoid(ax, data, color):<br>    # 计算椭球的中心<br>    center &#x3D; np.mean(data, axis&#x3D;1)</p>
+<pre><code># 计算椭球的半径
+radius = 0.5 * (np.max(data, axis=1) - np.min(data, axis=1))
+
+# 生成椭球的表面点
+u = np.linspace(0, 2 * np.pi, 100)
+v = np.linspace(0, np.pi, 100)
+x = center[0] + radius[0] * np.outer(np.cos(u), np.sin(v))
+y = center[1] + radius[1] * np.outer(np.sin(u), np.sin(v))
+z = center[2] + radius[2] * np.outer(np.ones(np.size(u)), np.cos(v))
+
+# 绘制椭球
+ax.plot_surface(x, y, z, color=color, alpha=0.2)
+</code></pre>
+<h1 id="显示散点在空间不同维度的分布情况"><a href="#显示散点在空间不同维度的分布情况" class="headerlink" title="显示散点在空间不同维度的分布情况"></a>显示散点在空间不同维度的分布情况</h1><p>matplotlib的官网实例中提到，可以采用zdir 字段实现2D内容在3D图上的绘制，这里实际上可以简单将zdir设置为2D图中“缺失的”那个维度，如下所示</p>
+<p>在X-Z平面上绘制核密度估计图<br>def draw_kde3d_X2XZ(ax, data,  color):<br>    kde &#x3D; gaussian_kde(data)<br>    xs &#x3D; np.linspace(np.min(data), np.max(data), 100)<br>    ys &#x3D; kde(xs)<br>    ax.plot(xs, ys<em>10, zs&#x3D;0, zdir&#x3D;’y’, color&#x3D;color)<br>在Y-Z平面上绘制核密度估计图<br>def draw_kde3d_Y2YZ(ax, data,  color):<br>    kde &#x3D; gaussian_kde(data)<br>    xs &#x3D; np.linspace(np.min(data), np.max(data), 100)<br>    ys &#x3D; kde(xs)<br>    ax.plot(xs,ys</em>100,  zs&#x3D;[1.2 for _ in range(len(data))], zdir&#x3D;’x’, color&#x3D;color)<br>在Z-Y平面上绘制核密度估计图<br>def draw_kde3d_Z2ZY(ax, data,  color):<br>    kde &#x3D; gaussian_kde(data)<br>    xs &#x3D; np.linspace(np.min(data), np.max(data), 100)<br>    ys &#x3D; kde(xs)<br>    ax.plot(ys*80,xs,  zs&#x3D;0, zdir&#x3D;’x’, color&#x3D;color)</p>
+<p>其实这里zdir其实就是与我们要绘制的平面相垂直的坐标轴，zdir在这里起到了“临时更换坐标轴”的作用。</p>
+<p>全部代码<br>import matplotlib.pyplot as plt<br>import numpy as np<br>from scipy.stats import gaussian_kde</p>
+<h1 id="创建3D图-1"><a href="#创建3D图-1" class="headerlink" title="创建3D图"></a>创建3D图</h1><p>ax &#x3D; plt.figure().add_subplot(projection&#x3D;’3d’)<br>data&#x3D;[]</p>
+<h1 id="随机生成data-1"><a href="#随机生成data-1" class="headerlink" title="随机生成data"></a>随机生成data</h1><h1 id="定义一个函数来生成数据"><a href="#定义一个函数来生成数据" class="headerlink" title="定义一个函数来生成数据"></a>定义一个函数来生成数据</h1><p>def generate_data(mean, std_dev):<br>    return np.random.normal(mean, std_dev, 100)<br>data.append(generate_data(0.8, 0.1))<br>data.append(generate_data(15, 2))<br>data.append(generate_data(60, 10))</p>
+<p>def draw_ellipsoid(ax, data, color):<br>    # 计算椭球的中心<br>    center &#x3D; np.mean(data, axis&#x3D;1)<br>    # 计算椭球的半径<br>    radius &#x3D; 0.5 * (np.max(data, axis&#x3D;1) - np.min(data, axis&#x3D;1))<br>    # 生成椭球的表面点<br>    u &#x3D; np.linspace(0, 2 * np.pi, 100)<br>    v &#x3D; np.linspace(0, np.pi, 100)<br>    x &#x3D; center[0] + radius[0] * np.outer(np.cos(u), np.sin(v))<br>    y &#x3D; center[1] + radius[1] * np.outer(np.sin(u), np.sin(v))<br>    z &#x3D; center[2] + radius[2] * np.outer(np.ones(np.size(u)), np.cos(v))<br>    # 绘制椭球<br>    ax.plot_surface(x, y, z, color&#x3D;color, alpha&#x3D;0.2)</p>
+<h1 id="在X-Z平面上绘制核密度估计图"><a href="#在X-Z平面上绘制核密度估计图" class="headerlink" title="在X-Z平面上绘制核密度估计图"></a>在X-Z平面上绘制核密度估计图</h1><p>def draw_kde3d_X2XZ(ax, data,  color):<br>    kde &#x3D; gaussian_kde(data)<br>    xs &#x3D; np.linspace(np.min(data), np.max(data), 100)<br>    ys &#x3D; kde(xs)<br>    ax.plot(xs, ys*10, zs&#x3D;0, zdir&#x3D;’y’, color&#x3D;color)</p>
+<h1 id="在Y-Z平面上绘制核密度估计图"><a href="#在Y-Z平面上绘制核密度估计图" class="headerlink" title="在Y-Z平面上绘制核密度估计图"></a>在Y-Z平面上绘制核密度估计图</h1><p>def draw_kde3d_Y2YZ(ax, data,  color):<br>    kde &#x3D; gaussian_kde(data)<br>    xs &#x3D; np.linspace(np.min(data), np.max(data), 100)<br>    ys &#x3D; kde(xs)<br>    ax.plot(xs,ys*100,  zs&#x3D;[1.2 for _ in range(len(data))], zdir&#x3D;’x’, color&#x3D;color)</p>
+<h1 id="在Z-Y平面上绘制核密度估计图"><a href="#在Z-Y平面上绘制核密度估计图" class="headerlink" title="在Z-Y平面上绘制核密度估计图"></a>在Z-Y平面上绘制核密度估计图</h1><p>def draw_kde3d_Z2ZY(ax, data,  color):<br>    kde &#x3D; gaussian_kde(data)<br>    xs &#x3D; np.linspace(np.min(data), np.max(data), 100)<br>    ys &#x3D; kde(xs)<br>    ax.plot(ys*80,xs,  zs&#x3D;0, zdir&#x3D;’x’, color&#x3D;color)</p>
+<p>xyzlims&#x3D;(0, 1.2, 0, 22, 0, 105)<br>绘制散点图<br>ax.scatter(data[0], data[1], data[2], c&#x3D;’g’, marker&#x3D;’*’, s&#x3D;10, label&#x3D;’data’)<br>绘制椭球<br>draw_ellipsoid(ax, data, ‘g’)<br>绘制X轴方向的核密度估计<br>draw_kde3d_X2XZ(ax, data[0], ‘g’)<br>绘制Y轴方向的核密度估计<br>draw_kde3d_Y2YZ(ax, data[1], ‘g’)<br>绘制Z轴方向的核密度估计<br>draw_kde3d_Z2ZY(ax, data[2], ‘g’)<br>ax.set(xlim&#x3D;(0, 1.2), ylim&#x3D;(0, 22), zlim&#x3D;(0, 105))<br>Set zoom and angle view<br>ax.view_init(20, -35, 0)<br>ax.set_box_aspect(None, zoom&#x3D;1)<br>设置坐标轴的网格线颜色<br>ax.xaxis.pane.set_edgecolor((1.0, 1.0, 1.0, 0.0))<br>ax.yaxis.pane.set_edgecolor((1.0, 1.0, 1.0, 0.0))<br>ax.zaxis.pane.set_edgecolor((1.0, 1.0, 1.0, 0.0))<br>ax.set_xlabel(‘X’)<br>ax.set_ylabel(‘Y’)<br>ax.set_zlabel(‘Z’)<br>plt.show()</p>
+<h1 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h1><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/source_posts%5CHX20241202matplotlib%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E6%95%A3%E7%82%B9%E5%9B%BE%5Cb977a51c2d8cfcc38d04f1639cc1e9d0.png" alt="实现效果"></p>
+<h1 id="一点小改进"><a href="#一点小改进" class="headerlink" title="一点小改进"></a>一点小改进</h1><p>有些时候，我们可能有多种数据需要进行比较。这时，坐标系、网格等元素会对我们的展示造成干扰。因此，这里可以关闭这些内容的显示，并使用立方体表示三维空间。</p>
+<p>def showbox(data,ax):<br>    x, y, z &#x3D; 0,0,0  #盒子坐标<br>    dx, dy, dz &#x3D; data  #盒子长、宽、高<br>    ax.bar3d(x, y, z, dx, dy, dz, color&#x3D;”green”,zsort&#x3D;’average’,edgecolor&#x3D;’black’,linewidth&#x3D;1,alpha&#x3D;0)</p>
+<p>···其他代码···</p>
+<p>设置坐标轴的背景颜色<br>ax.xaxis.pane.fill &#x3D; False<br>ax.yaxis.pane.fill &#x3D; False<br>ax.zaxis.pane.fill &#x3D; False<br>设置坐标轴不可见<br>ax.axis(‘off’)<br>ax.grid(False)<br>设置坐标轴的网格线颜色<br>ax.xaxis.pane.set_edgecolor((1.0, 1.0, 1.0, 0.0))<br>ax.yaxis.pane.set_edgecolor((1.0, 1.0, 1.0, 0.0))<br>ax.zaxis.pane.set_edgecolor((1.0, 1.0, 1.0, 0.0))<br>关闭坐标轴的刻度<br>ax.set_xticks([])<br>ax.set_yticks([])<br>ax.set_zticks([])<br>box &#x3D; (1.2,22,105)<br>显示立方体<br>showbox(box,ax)<br>ax.set_xlabel(‘X’)<br>ax.set_ylabel(‘Y’)<br>ax.set_zlabel(‘Z’)<br>plt.show()</p>
+<h1 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h1><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/source_posts%5CHX20241202matplotlib%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E6%95%A3%E7%82%B9%E5%9B%BE%5C0ccabe440fb398077aafa7c003f7fcf1.png" alt="最终效果"></p>
+
 <div class="article-footer fs14">
     <section id="license">
       <div class="header"><span>License</span></div>
@@ -98,7 +137,7 @@
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">Newer</div><a href="/2024/12/02/matplotlib%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E6%95%A3%E7%82%B9%E5%9B%BE/">matplotlib绘制三维散点图，并添加包围椭球及各维度核密度</a></div><div class="item" id="next"><div class="note">Older</div><a href="/2024/12/02/hello-world/">Hello World</a></div></section></div>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">Older</div><a href="/2024/12/02/Me/">About Me</a></div></section></div>
 
 
 
@@ -123,7 +162,14 @@
 <footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">He Xiao</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1">Stellar 1.29.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel blur'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">On This Page</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-text">实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA3D%E5%9B%BE"><span class="toc-text">创建3D图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90data"><span class="toc-text">随机生成data</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E6%95%A3%E7%82%B9%E5%9B%BE%E7%9A%84%E5%8C%85%E5%9B%B4%E6%A4%AD%E7%90%83"><span class="toc-text">显示散点图的包围椭球</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E6%95%A3%E7%82%B9%E5%9C%A8%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%90%8C%E7%BB%B4%E5%BA%A6%E7%9A%84%E5%88%86%E5%B8%83%E6%83%85%E5%86%B5"><span class="toc-text">显示散点在空间不同维度的分布情况</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA3D%E5%9B%BE-1"><span class="toc-text">创建3D图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90data-1"><span class="toc-text">随机生成data</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E6%9D%A5%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE"><span class="toc-text">定义一个函数来生成数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8X-Z%E5%B9%B3%E9%9D%A2%E4%B8%8A%E7%BB%98%E5%88%B6%E6%A0%B8%E5%AF%86%E5%BA%A6%E4%BC%B0%E8%AE%A1%E5%9B%BE"><span class="toc-text">在X-Z平面上绘制核密度估计图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8Y-Z%E5%B9%B3%E9%9D%A2%E4%B8%8A%E7%BB%98%E5%88%B6%E6%A0%B8%E5%AF%86%E5%BA%A6%E4%BC%B0%E8%AE%A1%E5%9B%BE"><span class="toc-text">在Y-Z平面上绘制核密度估计图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8Z-Y%E5%B9%B3%E9%9D%A2%E4%B8%8A%E7%BB%98%E5%88%B6%E6%A0%B8%E5%AF%86%E5%BA%A6%E4%BC%B0%E8%AE%A1%E5%9B%BE"><span class="toc-text">在Z-Y平面上绘制核密度估计图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%95%88%E6%9E%9C"><span class="toc-text">实现效果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E7%82%B9%E5%B0%8F%E6%94%B9%E8%BF%9B"><span class="toc-text">一点小改进</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C"><span class="toc-text">最终效果</span></a></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>Scroll to Top</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M10.46 1.25h3.08c1.603 0 2.86 0 3.864.095c1.023.098 1.861.3 2.6.752a5.75 5.75 0 0 1 1.899 1.899c.452.738.654 1.577.752 2.6c.095 1.004.095 2.261.095 3.865v1.067c0 1.141 0 2.036-.05 2.759c-.05.735-.153 1.347-.388 1.913a5.75 5.75 0 0 1-3.112 3.112c-.805.334-1.721.408-2.977.43a10.81 10.81 0 0 0-.929.036c-.198.022-.275.054-.32.08c-.047.028-.112.078-.224.232c-.121.166-.258.396-.476.764l-.542.916c-.773 1.307-2.69 1.307-3.464 0l-.542-.916a10.605 10.605 0 0 0-.476-.764c-.112-.154-.177-.204-.224-.232c-.045-.026-.122-.058-.32-.08c-.212-.023-.49-.03-.93-.037c-1.255-.021-2.171-.095-2.976-.429A5.75 5.75 0 0 1 1.688 16.2c-.235-.566-.338-1.178-.389-1.913c-.049-.723-.049-1.618-.049-2.76v-1.066c0-1.604 0-2.86.095-3.865c.098-1.023.3-1.862.752-2.6a5.75 5.75 0 0 1 1.899-1.899c.738-.452 1.577-.654 2.6-.752C7.6 1.25 8.857 1.25 10.461 1.25M6.739 2.839c-.914.087-1.495.253-1.959.537A4.25 4.25 0 0 0 3.376 4.78c-.284.464-.45 1.045-.537 1.96c-.088.924-.089 2.11-.089 3.761v1c0 1.175 0 2.019.046 2.685c.045.659.131 1.089.278 1.441a4.25 4.25 0 0 0 2.3 2.3c.515.214 1.173.294 2.429.316h.031c.398.007.747.013 1.037.045c.311.035.616.104.909.274c.29.17.5.395.682.645c.169.232.342.525.538.856l.559.944a.52.52 0 0 0 .882 0l.559-.944c.196-.331.37-.624.538-.856c.182-.25.392-.476.682-.645c.293-.17.598-.24.909-.274c.29-.032.639-.038 1.037-.045h.032c1.255-.022 1.913-.102 2.428-.316a4.25 4.25 0 0 0 2.3-2.3c.147-.352.233-.782.278-1.441c.046-.666.046-1.51.046-2.685v-1c0-1.651 0-2.837-.089-3.762c-.087-.914-.253-1.495-.537-1.959a4.25 4.25 0 0 0-1.403-1.403c-.464-.284-1.045-.45-1.96-.537c-.924-.088-2.11-.089-3.761-.089h-3c-1.651 0-2.837 0-3.762.089" clip-rule="evenodd"/><path fill="currentColor" d="M9 11a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><span>Join Discussion</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
