@@ -1,0 +1,783 @@
+
+
+<!DOCTYPE html>
+<html lang="en,zh-CN,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/%E5%BE%AE%E4%BF%A1%E5%A4%B4%E5%83%8F.jpg">
+  <link rel="icon" href="/images/%E5%BE%AE%E4%BF%A1%E5%A4%B4%E5%83%8F.jpg">
+  
+  <meta name="google-site-verification" content="Wun74FKNKQ1jqN5QPsmjCDL1Nqt1adsBdnNQQDumO4Q" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="He Xiao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Introducing HEProOE, an extension of the ProOE model that integrates hyperedges to ensure semantic consistency in spatial community detection.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HEProOE: A Hyperedge Enhanced Probabilistic Optimal Estimation Method for Detecting Spatial Fuzzy Communities">
+<meta property="og:url" content="https://hexiao2001.github.io/2025/11/17/HEProOE/index.html">
+<meta property="og:site_name" content="HeX&#39;s Blog">
+<meta property="og:description" content="Introducing HEProOE, an extension of the ProOE model that integrates hyperedges to ensure semantic consistency in spatial community detection.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://hexiao2001.github.io/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/re1.png">
+<meta property="og:image" content="https://hexiao2001.github.io/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/re2.png">
+<meta property="og:image" content="https://hexiao2001.github.io/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/re3.png">
+<meta property="og:image" content="https://hexiao2001.github.io/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/re4.png">
+<meta property="article:published_time" content="2025-11-17T10:00:00.000Z">
+<meta property="article:modified_time" content="2025-11-17T08:18:30.647Z">
+<meta property="article:author" content="He Xiao">
+<meta property="article:tag" content="Spatial Analysis">
+<meta property="article:tag" content="Community Detection">
+<meta property="article:tag" content="Urban Computing">
+<meta property="article:tag" content="Hypergraph">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://hexiao2001.github.io/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/re1.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>HEProOE: A Hyperedge Enhanced Probabilistic Optimal Estimation Method for Detecting Spatial Fuzzy Communities - HeX&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"hexiao2001.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":30,"cursorChar":" ","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 30vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>HeX</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/%E9%BB%91%E6%9B%9C%E7%9F%B3.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="HEProOE: A Hyperedge Enhanced Probabilistic Optimal Estimation Method for Detecting Spatial Fuzzy Communities"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-11-17 18:00" pubdate>
+          November 17, 2025 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          122 words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          2 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">HEProOE: A Hyperedge Enhanced Probabilistic Optimal Estimation Method for Detecting Spatial Fuzzy Communities</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>Building upon our previous work with ProOE, we are thrilled to introduce the <strong>Hyperedge-Enhanced Probabilistic Optimal Estimation (HEProOE)</strong> method. This advanced model addresses a key limitation in mobility-based community detection: the fragmentation of large, semantically consistent areas. HEProOE integrates hyperedges to represent these “Indivisible Regions” (IRs), ensuring that the detected communities are not only structurally sound but also functionally coherent.</p>
+<ul>
+<li><strong>Paper:</strong> The full manuscript is currently in production.</li>
+<li><strong>GitHub Repository:</strong> The data and code can be requested from the corresponding author or the first author.</li>
+</ul>
+<hr>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a><strong>Abstract</strong></h3><p>Identifying spatial communities with human mobility data has emerged as a key approach to understanding urban spatial structure. However, relying solely on human mobility data to partition spatial communities ignores the semantic information and may fragment large, semantic consistent Indivisible Regions (IRs) such as college campuses. Furthermore, individual spatial units often belong simultaneously to multiple IRs, creating membership uncertainty, while the spatial stochasticity of human movements inherently introduces ambiguity to the boundaries of spatial fuzzy communities. To address these challenges, we proposed the Hyperedge-Enhanced Probabilistic Optimal Estimation method (HEProOE) that integrated the hyperedge into spatial fuzzy community detection, representing IRs as semantic consistent regions. First, IRs were represented as hyperedges, where each spatial unit holds a probabilistic community membership. Second, a novel distance-weighted Jensen-Shannon (JS) divergence metric was introduced to measure the semantic consistency within each hyperedge. Finally, this metric was converted into a new likelihood component and seamlessly integrated with the mobility-based ProOE model, yielding a unified framework that simultaneously optimizes for both mobility patterns and semantic consistency. Experimental results demonstrated that HEProOE uncovers spatial fuzzy communities with significantly higher semantic consistency, providing an effective tool for a more authentic understanding of urban spatial structures.</p>
+<hr>
+<h3 id="The-Challenge-Beyond-Mobility-Patterns"><a href="#The-Challenge-Beyond-Mobility-Patterns" class="headerlink" title="The Challenge: Beyond Mobility Patterns"></a><strong>The Challenge: Beyond Mobility Patterns</strong></h3><p>While models like ProOE excel at identifying fuzzy communities from mobility data, they can sometimes break apart functionally unified areas—like a large university campus or a financial district—because the internal mobility patterns might not be perfectly uniform. These <strong>Indivisible Regions (IRs)</strong> have a strong semantic identity that should be preserved.</p>
+<h3 id="The-HEProOE-Framework-Integrating-Semantics-with-Hyperedges"><a href="#The-HEProOE-Framework-Integrating-Semantics-with-Hyperedges" class="headerlink" title="The HEProOE Framework: Integrating Semantics with Hyperedges"></a><strong>The HEProOE Framework: Integrating Semantics with Hyperedges</strong></h3><p>HEProOE solves this by introducing <strong>hyperedges</strong>. In network science, a regular edge connects two nodes. A hyperedge can connect <em>multiple</em> nodes at once. We use hyperedges to model IRs, grouping all spatial units within a single functional zone (e.g., all the zones that make up “Midtown”).</p>
+<p>This creates a unified probabilistic framework that balances two goals:</p>
+<ol>
+<li>Aligning with observed <strong>mobility patterns</strong> (the strength of ProOE).</li>
+<li>Enforcing <strong>semantic consistency</strong> within known IRs (the new enhancement).</li>
+</ol>
+<p>The overall methodology is illustrated below.</p>
+<p><img src="/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/re1.png" srcset="/img/loading.gif" lazyload alt="Figure 1. Illustration of the proposed Hyperedge-Enhanced Probabilistic Optimal Estimation method. The pie chart shows the spatial units&#39; membership to different communities. The colors represent different communities."></p>
+<hr>
+<h3 id="Study-Area-and-Data"><a href="#Study-Area-and-Data" class="headerlink" title="Study Area and Data"></a><strong>Study Area and Data</strong></h3><p>We again use <strong>New York City</strong> as our study area. The IRs (hyperedges) were sourced from OpenStreetMap, selecting 18 prominent, named regions like “Upper West Side” and “Lenox Hill.” The mobility data comes from over 8 million taxi trips.</p>
+<p><img src="/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/re2.png" srcset="/img/loading.gif" lazyload alt="Figure 2. Overview of study area and data. (a) Overview of the research area. (b) Trip data for New York City. (c) IRs obtained from OpenStreetMap [Data © OpenStreetMap contributors; licensed under ODbL 1.0; openstreetmap.org/copyright]."></p>
+<hr>
+<h3 id="Key-Results-Semantically-Consistent-Communities"><a href="#Key-Results-Semantically-Consistent-Communities" class="headerlink" title="Key Results: Semantically Consistent Communities"></a><strong>Key Results: Semantically Consistent Communities</strong></h3><p>The integration of hyperedges leads to a significant improvement in the quality and interpretability of the detected communities.<br><img src="/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/re3.png" srcset="/img/loading.gif" lazyload alt="Figure 3. Detection result based on HEProOE. (a) Spatial fuzzy community. (b) Confidence Index (ConI). (c) Certainty Index (CerI)."></p>
+<h4 id="Visual-Comparison-ProOE-vs-HEProOE"><a href="#Visual-Comparison-ProOE-vs-HEProOE" class="headerlink" title="Visual Comparison: ProOE vs. HEProOE"></a><strong>Visual Comparison: ProOE vs. HEProOE</strong></h4><p>The figure below shows a direct comparison between the communities detected by the original ProOE and the new HEProOE. While ProOE identifies a reasonable structure, it incorrectly splits the well-defined “Upper West Side” and “Upper East Side” regions. HEProOE, guided by the semantic hyperedges, correctly preserves the integrity of these large functional zones.<br><img src="/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/re4.png" srcset="/img/loading.gif" lazyload alt="Figure 4. Comparison between community detection results from (a) HEProOE, (b) ProOE, and (c) Hypergraph-MT"></p>
+<h4 id="Quantitative-Evaluation"><a href="#Quantitative-Evaluation" class="headerlink" title="Quantitative Evaluation"></a><strong>Quantitative Evaluation</strong></h4><p>To provide a quantitative basis for our comparison, we measured the alignment between each model’s community partitions and the predefined Identified Regions (IRs) using Fuzzy Normalized Mutual Information (FNMI)30. The results are telling: HEProOE achieved the highest FNMI score (0.440), surpassing both ProOE (0.410) and Hypergraph-MT (0.312). This score confirms that our model’s partitions correspond most closely to the city’s established semantic geography, a finding corroborated by visual analysis.</p>
+<p>By combining the strengths of probabilistic modeling with the structural integrity of hypergraphs, HEProOE provides a powerful and more authentic tool for understanding the complex fabric of our cities.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Research/" class="category-chain-item">Research</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Research/Technique/" class="category-chain-item">Technique</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Spatial-Analysis/" class="print-no-link">#Spatial Analysis</a>
+      
+        <a href="/tags/Community-Detection/" class="print-no-link">#Community Detection</a>
+      
+        <a href="/tags/Urban-Computing/" class="print-no-link">#Urban Computing</a>
+      
+        <a href="/tags/Hypergraph/" class="print-no-link">#Hypergraph</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>HEProOE: A Hyperedge Enhanced Probabilistic Optimal Estimation Method for Detecting Spatial Fuzzy Communities</div>
+      <div>https://hexiao2001.github.io/2025/11/17/HEProOE/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>He Xiao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 17, 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/04/05/ProOE/" title="ProOE: A Probabilistic Optimal Estimation Method for Detecting Spatial Fuzzy Communities">
+                        <span class="hidden-mobile">ProOE: A Probabilistic Optimal Estimation Method for Detecting Spatial Fuzzy Communities</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"hexiao2001/hexiao2001.github.io","repo-id":"R_kgDONXk1iQ","category":"Announcements","category-id":"DIC_kwDONXk1ic4CkzH5","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"en"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        Views: 
+        <span id="busuanzi_value_site_pv"></span>
+        
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        Visitors: 
+        <span id="busuanzi_value_site_uv"></span>
+        
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
