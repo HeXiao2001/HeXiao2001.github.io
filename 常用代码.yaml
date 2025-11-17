@@ -1,0 +1,21 @@
+Hexo 常用命令
+
+hexo init：此命令用于初始化一个本地文件夹作为网站的根目录。通过运行 hexo init <folder>，您可以在指定文件夹中创建一个新的 Hexo 网站。
+
+hexo new：此命令用于新建一篇文章。通过运行 hexo new <title>，您可以创建一个新的 Markdown 文件，该文件将作为一篇新的博客文章。您还可以使用 hexo new page <pageName> 来新建一个页面。
+
+hexo generate：此命令用于生成静态文件。在编写完文章后，您需要运行 hexo generate 或简写为 hexo g 来将 Markdown 文件转换为 HTML 文件。这些 HTML 文件将被存储在 public 目录中。
+
+hexo server：此命令用于启动本地服务器，以便预览您的博客。通过运行 hexo server 或简写为 hexo s，您可以在本地浏览器中访问 http://localhost:4000 来查看您的博客。您还可以使用 -p 选项来指定服务器端口，使用 -i 选项来指定服务器 IP 地址。
+
+hexo deploy：此命令用于部署网站。在您的博客准备就绪后，您可以运行 hexo deploy 或简写为 hexo d 来将您的博客部署到远程服务器上。Hexo 支持多种部署方式，如 GitHub、GitLab 等。
+
+hexo clean：此命令用于清理生成的静态文件和缓存文件。在运行 hexo clean 后，public 目录中的所有文件将被删除。
+
+二、Hexo 命令缩写
+
+为了更快速地执行命令，Hexo 提供了一些命令缩写。例如，hexo new 可以简写为 hexo n，hexo generate 可以简写为 hexo g，hexo server 可以简写为 hexo s，hexo deploy 可以简写为 hexo d。
+
+三、Hexo 组合命令
+
+Hexo 还支持组合命令，以便更高效地执行任务。例如，hexo s -g 命令将同时启动本地服务器并生成静态文件，这样您可以在预览博客的同时确保生成的静态文件是最新的。同样，hexo d -g 命令将同时生成静态文件并部署到远程服务器。
