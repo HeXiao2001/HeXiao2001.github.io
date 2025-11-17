@@ -28,19 +28,19 @@
 <meta property="og:site_name" content="HeX&#39;s Blog">
 <meta property="og:description" content="Introducing HEProOE, an extension of the ProOE model that integrates hyperedges to ensure semantic consistency in spatial community detection.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://hexiao2001.github.io/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/re1.png">
-<meta property="og:image" content="https://hexiao2001.github.io/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/re2.png">
-<meta property="og:image" content="https://hexiao2001.github.io/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/re3.png">
-<meta property="og:image" content="https://hexiao2001.github.io/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/re4.png">
+<meta property="og:image" content="https://hexiao2001.github.io/2025/11/17/HEProOE/Figure1.png">
+<meta property="og:image" content="https://hexiao2001.github.io/2025/11/17/HEProOE/Figure2.png">
+<meta property="og:image" content="https://hexiao2001.github.io/2025/11/17/HEProOE/Figure3.png">
+<meta property="og:image" content="https://hexiao2001.github.io/2025/11/17/HEProOE/Figure4.png">
 <meta property="article:published_time" content="2025-11-17T10:00:00.000Z">
 <meta property="article:modified_time" content="2025-11-17T08:18:30.647Z">
 <meta property="article:author" content="He Xiao">
 <meta property="article:tag" content="Spatial Analysis">
 <meta property="article:tag" content="Community Detection">
-<meta property="article:tag" content="Urban Computing">
 <meta property="article:tag" content="Hypergraph">
+<meta property="article:tag" content="Urban Computing">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://hexiao2001.github.io/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/re1.png">
+<meta name="twitter:image" content="https://hexiao2001.github.io/2025/11/17/HEProOE/Figure1.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -324,13 +324,13 @@
 <li>Enforcing <strong>semantic consistency</strong> within known IRs (the new enhancement).</li>
 </ol>
 <p>The overall methodology is illustrated below.</p>
-<p><img src="/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/re1.png" srcset="/img/loading.gif" lazyload alt="Figure 1. Illustration of the proposed Hyperedge-Enhanced Probabilistic Optimal Estimation method. The pie chart shows the spatial units&#39; membership to different communities. The colors represent different communities."></p>
+<p><img src="/2025/11/17/HEProOE/Figure1.png" srcset="/img/loading.gif" lazyload alt="Figure 1. Illustration of the proposed Hyperedge-Enhanced Probabilistic Optimal Estimation method. The pie chart shows the spatial units&#39; membership to different communities. The colors represent different communities."></p>
 <hr>
 <h3 id="Study-Area-and-Data"><a href="#Study-Area-and-Data" class="headerlink" title="Study Area and Data"></a><strong>Study Area and Data</strong></h3><p>We again use <strong>New York City</strong> as our study area. The IRs (hyperedges) were sourced from OpenStreetMap, selecting 18 prominent, named regions like “Upper West Side” and “Lenox Hill.” The mobility data comes from over 8 million taxi trips.</p>
-<p><img src="/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/re2.png" srcset="/img/loading.gif" lazyload alt="Figure 2. Overview of study area and data. (a) Overview of the research area. (b) Trip data for New York City. (c) IRs obtained from OpenStreetMap [Data © OpenStreetMap contributors; licensed under ODbL 1.0; openstreetmap.org/copyright]."></p>
+<p><img src="/2025/11/17/HEProOE/Figure2.png" srcset="/img/loading.gif" lazyload alt="Figure 2. Overview of study area and data. (a) Overview of the research area. (b) Trip data for New York City. (c) IRs obtained from OpenStreetMap [Data © OpenStreetMap contributors; licensed under ODbL 1.0; openstreetmap.org/copyright]."></p>
 <hr>
-<h3 id="Key-Results-Semantically-Consistent-Communities"><a href="#Key-Results-Semantically-Consistent-Communities" class="headerlink" title="Key Results: Semantically Consistent Communities"></a><strong>Key Results: Semantically Consistent Communities</strong></h3><p>The integration of hyperedges leads to a significant improvement in the quality and interpretability of the detected communities.<br><img src="/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/re3.png" srcset="/img/loading.gif" lazyload alt="Figure 3. Detection result based on HEProOE. (a) Spatial fuzzy community. (b) Confidence Index (ConI). (c) Certainty Index (CerI)."></p>
-<h4 id="Visual-Comparison-ProOE-vs-HEProOE"><a href="#Visual-Comparison-ProOE-vs-HEProOE" class="headerlink" title="Visual Comparison: ProOE vs. HEProOE"></a><strong>Visual Comparison: ProOE vs. HEProOE</strong></h4><p>The figure below shows a direct comparison between the communities detected by the original ProOE and the new HEProOE. While ProOE identifies a reasonable structure, it incorrectly splits the well-defined “Upper West Side” and “Upper East Side” regions. HEProOE, guided by the semantic hyperedges, correctly preserves the integrity of these large functional zones.<br><img src="/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/re4.png" srcset="/img/loading.gif" lazyload alt="Figure 4. Comparison between community detection results from (a) HEProOE, (b) ProOE, and (c) Hypergraph-MT"></p>
+<h3 id="Key-Results-Semantically-Consistent-Communities"><a href="#Key-Results-Semantically-Consistent-Communities" class="headerlink" title="Key Results: Semantically Consistent Communities"></a><strong>Key Results: Semantically Consistent Communities</strong></h3><p>The integration of hyperedges leads to a significant improvement in the quality and interpretability of the detected communities.<br><img src="/2025/11/17/HEProOE/Figure3.png" srcset="/img/loading.gif" lazyload alt="Figure 3. Detection result based on HEProOE. (a) Spatial fuzzy community. (b) Confidence Index (ConI). (c) Certainty Index (CerI)."></p>
+<h4 id="Visual-Comparison-ProOE-vs-HEProOE"><a href="#Visual-Comparison-ProOE-vs-HEProOE" class="headerlink" title="Visual Comparison: ProOE vs. HEProOE"></a><strong>Visual Comparison: ProOE vs. HEProOE</strong></h4><p>The figure below shows a direct comparison between the communities detected by the original ProOE and the new HEProOE. While ProOE identifies a reasonable structure, it incorrectly splits the well-defined “Upper West Side” and “Upper East Side” regions. HEProOE, guided by the semantic hyperedges, correctly preserves the integrity of these large functional zones.<br><img src="/2025/11/17/HEProOE/Figure4.png" srcset="/img/loading.gif" lazyload alt="Figure 4. Comparison between community detection results from (a) HEProOE, (b) ProOE, and (c) Hypergraph-MT"></p>
 <h4 id="Quantitative-Evaluation"><a href="#Quantitative-Evaluation" class="headerlink" title="Quantitative Evaluation"></a><strong>Quantitative Evaluation</strong></h4><p>To provide a quantitative basis for our comparison, we measured the alignment between each model’s community partitions and the predefined Identified Regions (IRs) using Fuzzy Normalized Mutual Information (FNMI)30. The results are telling: HEProOE achieved the highest FNMI score (0.440), surpassing both ProOE (0.410) and Hypergraph-MT (0.312). This score confirms that our model’s partitions correspond most closely to the city’s established semantic geography, a finding corroborated by visual analysis.</p>
 <p>By combining the strengths of probabilistic modeling with the structural integrity of hypergraphs, HEProOE provides a powerful and more authentic tool for understanding the complex fabric of our cities.</p>
 
@@ -377,9 +377,9 @@
       
         <a href="/tags/Community-Detection/" class="print-no-link">#Community Detection</a>
       
-        <a href="/tags/Urban-Computing/" class="print-no-link">#Urban Computing</a>
-      
         <a href="/tags/Hypergraph/" class="print-no-link">#Hypergraph</a>
+      
+        <a href="/tags/Urban-Computing/" class="print-no-link">#Urban Computing</a>
       
     </div>
   
