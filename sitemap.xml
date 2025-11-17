@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>https://hexiao2001.github.io/2025/11/17/HEProOE/</loc>
+    
+    <lastmod>2025-11-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://hexiao2001.github.io/about/index.html</loc>
     
     <lastmod>2025-11-17</lastmod>
@@ -30,15 +39,6 @@
   
   <url>
     <loc>https://hexiao2001.github.io/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/</loc>
-    
-    <lastmod>2025-11-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://hexiao2001.github.io/2025/11/17/HEProOE/</loc>
     
     <lastmod>2025-11-17</lastmod>
     
@@ -86,13 +86,6 @@
   </url>
   
   <url>
-    <loc>https://hexiao2001.github.io/tags/Spatial-Analysis/</loc>
-    <lastmod>2025-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://hexiao2001.github.io/tags/Community-Detection/</loc>
     <lastmod>2025-11-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -120,6 +113,20 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://hexiao2001.github.io/tags/Human-Mobility/</loc>
+    <lastmod>2025-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hexiao2001.github.io/tags/Fuzzy-theory/</loc>
+    <lastmod>2025-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -137,7 +144,7 @@
   </url>
   
   <url>
-    <loc>https://hexiao2001.github.io/categories/Research/Technique/</loc>
+    <loc>https://hexiao2001.github.io/categories/Research/Methodology/</loc>
     <lastmod>2025-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
