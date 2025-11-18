@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hexiao2001.github.io/font_5068291_1pcjiqq27gd/demo_index.html</loc>
+    
+    <lastmod>2025-11-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://hexiao2001.github.io/font_5068291_1pcjiqq27gd/iconfont.json</loc>
+    
+    <lastmod>2025-11-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://hexiao2001.github.io/about/index.html</loc>
     
     <lastmod>2025-11-18</lastmod>
@@ -86,6 +104,13 @@
   </url>
   
   <url>
+    <loc>https://hexiao2001.github.io/tags/Community-Detection/</loc>
+    <lastmod>2025-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://hexiao2001.github.io/tags/Human-Mobility/</loc>
     <lastmod>2025-11-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -100,14 +125,7 @@
   </url>
   
   <url>
-    <loc>https://hexiao2001.github.io/tags/Community-Detection/</loc>
-    <lastmod>2025-11-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hexiao2001.github.io/tags/Python/</loc>
+    <loc>https://hexiao2001.github.io/tags/Hypergraph/</loc>
     <lastmod>2025-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -121,7 +139,7 @@
   </url>
   
   <url>
-    <loc>https://hexiao2001.github.io/tags/Hypergraph/</loc>
+    <loc>https://hexiao2001.github.io/tags/Python/</loc>
     <lastmod>2025-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
