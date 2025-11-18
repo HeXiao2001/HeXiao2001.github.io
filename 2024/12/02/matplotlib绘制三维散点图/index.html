@@ -1,4 +1,4 @@
-﻿
+
 
 <!DOCTYPE html>
 <html lang="en,zh-CN,default" data-default-color-scheme=auto>
@@ -30,7 +30,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="/images/me.jpg">
   <link rel="icon" href="/images/me.jpg">
   
-    <link rel="canonical" href="https://HeXiao2001.github.io/2024/12/02/matplotlib缁樺埗涓夌淮鏁ｇ偣鍥?"/>
+    <link rel="canonical" href="https://HeXiao2001.github.io/2024/12/02/matplotlib绘制三维散点图/"/>
   
   <meta name="google-site-verification" content="Wun74FKNKQ1jqN5QPsmjCDL1Nqt1adsBdnNQQDumO4Q" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -42,12 +42,12 @@
   <meta name="author" content="Xiao He">
   <meta name="keywords" content="urban computing, spatial analysis, community detection, human mobility, fuzzy theory, hypergraph, data science, GIS, ProOE, HEProOE">
   
-    <meta name="description" content="璇︾粏鏁欑▼锛氫娇鐢?Matplotlib 缁樺埗绮剧編鐨勪笁缁存暎鐐瑰浘锛屾坊鍔犲寘鍥存き鐞冿紝骞跺湪鍚勪釜缁村害涓婂睍绀烘牳瀵嗗害鍒嗗竷銆傞€傜敤浜庢暟鎹彲瑙嗗寲鍜岀瀛﹁绠椼€?>
+    <meta name="description" content="详细教程：使用 Matplotlib 绘制精美的三维散点图，添加包围椭球，并在各个维度上展示核密度分布。适用于数据可视化和科学计算。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Matplotlib 缁樺埗涓夌淮鏁ｇ偣鍥句笌鍖呭洿妞悆鍙婃牳瀵嗗害鍒嗘瀽">
+<meta property="og:title" content="Matplotlib 绘制三维散点图与包围椭球及核密度分析">
 <meta property="og:url" content="https://hexiao2001.github.io/2024/12/02/matplotlib%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E6%95%A3%E7%82%B9%E5%9B%BE/index.html">
 <meta property="og:site_name" content="Xiao He&#39;s Blog">
-<meta property="og:description" content="璇︾粏鏁欑▼锛氫娇鐢?Matplotlib 缁樺埗绮剧編鐨勪笁缁存暎鐐瑰浘锛屾坊鍔犲寘鍥存き鐞冿紝骞跺湪鍚勪釜缁村害涓婂睍绀烘牳瀵嗗害鍒嗗竷銆傞€傜敤浜庢暟鎹彲瑙嗗寲鍜岀瀛﹁绠椼€?>
+<meta property="og:description" content="详细教程：使用 Matplotlib 绘制精美的三维散点图，添加包围椭球，并在各个维度上展示核密度分布。适用于数据可视化和科学计算。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://hexiao2001.github.io/2024/12/02/matplotlib%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E6%95%A3%E7%82%B9%E5%9B%BE/%E6%95%88%E6%9E%9C%E5%9B%BE.png">
 <meta property="og:image" content="https://hexiao2001.github.io/2024/12/02/matplotlib%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E6%95%A3%E7%82%B9%E5%9B%BE/%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C%E5%9B%BE.png">
@@ -63,7 +63,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Matplotlib 缁樺埗涓夌淮鏁ｇ偣鍥句笌鍖呭洿妞悆鍙婃牳瀵嗗害鍒嗘瀽 - Xiao He&#39;s Blog</title>
+  <title>Matplotlib 绘制三维散点图与包围椭球及核密度分析 - Xiao He&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -77,7 +77,7 @@
 
 
 
-<!-- 涓婚渚濊禆鐨勫浘鏍囧簱锛屼笉瑕佽嚜琛屼慨鏀?-->
+<!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
 <link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
@@ -152,9 +152,9 @@
 
 
   
-<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/libs/videojs2/video-js.css">
-<script src="/libs/videojs2/video.js"></script>
-<script src="/libs/videojs2/videojs-http-streaming.js"></script></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="https://unpkg.com/video.js@6.7.1/dist/video-js.css">
+<script src="https://unpkg.com/video.js@6.7.1/dist/video.js"></script>
+<script src="https://unpkg.com/@videojs/http-streaming@0.9.0/dist/videojs-http-streaming.js"></script></head>
 
 
 <body>
@@ -269,7 +269,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Matplotlib 缁樺埗涓夌淮鏁ｇ偣鍥句笌鍖呭洿妞悆鍙婃牳瀵嗗害鍒嗘瀽"></span>
+            <span id="subtitle" data-typed-text="Matplotlib 绘制三维散点图与包围椭球及核密度分析"></span>
           
         </div>
 
@@ -349,83 +349,83 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Matplotlib 缁樺埗涓夌淮鏁ｇ偣鍥句笌鍖呭洿妞悆鍙婃牳瀵嗗害鍒嗘瀽</h1>
+            <h1 id="seo-header">Matplotlib 绘制三维散点图与包围椭球及核密度分析</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="鑳屾櫙"><a href="#鑳屾櫙" class="headerlink" title="鑳屾櫙"></a>鑳屾櫙</h2><p>鎴戜滑鍦ㄧ粯鍒朵笁缁存暎鐐规椂缁忓父闇€瑕佸湪涓€寮犲浘涓弿杩帮細1.鏁ｇ偣鍦ㄧ┖闂翠腑鐨勫垎甯冪姸鎬侊紱2.鏁ｇ偣鍦ㄧ┖闂翠笉鍚岀淮搴︾殑鍒嗗竷鎯呭喌銆?br>涓嬮潰浠嬬粛涓€绉嶏細閫氳繃妞悆鎻忚堪鏁ｇ偣鍦ㄧ┖闂翠腑鐨勫垎甯冪姸鎬侊紝骞堕€氳繃鏍稿瘑搴︽洸绾挎弿杩版暎鐐瑰湪绌洪棿涓嶅悓缁村害鐨勫垎甯冩儏鍐电殑鏂规硶銆?/p>
-<h2 id="瀹炵幇"><a href="#瀹炵幇" class="headerlink" title="瀹炵幇"></a>瀹炵幇</h2><p>瀵煎叆蹇呰鐨勫簱锛屾暟鎹噯澶?/p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> scipy.stats <span class="hljs-keyword">import</span> gaussian_kde  <span class="hljs-comment"># 瀵煎叆楂樻柉鏍稿嚱鏁?/span><br></code></pre></td></tr></table></figure>
+                <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>我们在绘制三维散点时经常需要在一张图中描述：1.散点在空间中的分布状态；2.散点在空间不同维度的分布情况。<br>下面介绍一种：通过椭球描述散点在空间中的分布状态，并通过核密度曲线描述散点在空间不同维度的分布情况的方法。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>导入必要的库，数据准备</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> scipy.stats <span class="hljs-keyword">import</span> gaussian_kde  <span class="hljs-comment"># 导入高斯核函数</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="鍒涘缓3D鍥?><a href="#鍒涘缓3D鍥? class="headerlink" title="鍒涘缓3D鍥?></a>鍒涘缓3D鍥?/h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">ax = plt.figure().add_subplot(projection=<span class="hljs-string">&#x27;3d&#x27;</span>)<br>data=[]<br></code></pre></td></tr></table></figure>
-<h2 id="闅忔満鐢熸垚data"><a href="#闅忔満鐢熸垚data" class="headerlink" title="闅忔満鐢熸垚data"></a>闅忔満鐢熸垚data</h2><p>瀹氫箟涓€涓嚱鏁版潵鐢熸垚鏁版嵁</p>
+<h2 id="创建3D图"><a href="#创建3D图" class="headerlink" title="创建3D图"></a>创建3D图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">ax = plt.figure().add_subplot(projection=<span class="hljs-string">&#x27;3d&#x27;</span>)<br>data=[]<br></code></pre></td></tr></table></figure>
+<h2 id="随机生成data"><a href="#随机生成data" class="headerlink" title="随机生成data"></a>随机生成data</h2><p>定义一个函数来生成数据</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">generate_data</span>(<span class="hljs-params">mean, std_dev</span>):<br>    <span class="hljs-keyword">return</span> np.random.normal(mean, std_dev, <span class="hljs-number">100</span>)<br>data.append(generate_data(<span class="hljs-number">0.8</span>, <span class="hljs-number">0.1</span>))<br>data.append(generate_data(<span class="hljs-number">15</span>, <span class="hljs-number">2</span>))<br>data.append(generate_data(<span class="hljs-number">60</span>, <span class="hljs-number">10</span>))<br></code></pre></td></tr></table></figure>
-<h2 id="鏄剧ず鏁ｇ偣鍥剧殑鍖呭洿妞悆"><a href="#鏄剧ず鏁ｇ偣鍥剧殑鍖呭洿妞悆" class="headerlink" title="鏄剧ず鏁ｇ偣鍥剧殑鍖呭洿妞悆"></a>鏄剧ず鏁ｇ偣鍥剧殑鍖呭洿妞悆</h2><p>matplotlib涓渶瑕佹瀯閫犵偣闃典互鏄剧ず闈紝鍥犳鎴戜滑闇€瑕侀鍏堢敓鎴愭き鐞冮潰鐨刋YZ鍧愭爣锛岀劧鍚庣粯鍒?/p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">draw_ellipsoid</span>(<span class="hljs-params">ax, data, color</span>):<br>    <span class="hljs-comment"># 璁＄畻妞悆鐨勪腑蹇?/span><br>    center = np.mean(data, axis=<span class="hljs-number">1</span>)<br><br>    <span class="hljs-comment"># 璁＄畻妞悆鐨勫崐寰?/span><br>    radius = <span class="hljs-number">0.5</span> * (np.<span class="hljs-built_in">max</span>(data, axis=<span class="hljs-number">1</span>) - np.<span class="hljs-built_in">min</span>(data, axis=<span class="hljs-number">1</span>))<br><br>    <span class="hljs-comment"># 鐢熸垚妞悆鐨勮〃闈㈢偣</span><br>    u = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">2</span> * np.pi, <span class="hljs-number">100</span>)<br>    v = np.linspace(<span class="hljs-number">0</span>, np.pi, <span class="hljs-number">100</span>)<br>    x = center[<span class="hljs-number">0</span>] + radius[<span class="hljs-number">0</span>] * np.outer(np.cos(u), np.sin(v))<br>    y = center[<span class="hljs-number">1</span>] + radius[<span class="hljs-number">1</span>] * np.outer(np.sin(u), np.sin(v))<br>    z = center[<span class="hljs-number">2</span>] + radius[<span class="hljs-number">2</span>] * np.outer(np.ones(np.size(u)), np.cos(v))<br><br>    <span class="hljs-comment"># 缁樺埗妞悆</span><br>    ax.plot_surface(x, y, z, color=color, alpha=<span class="hljs-number">0.2</span>)<br></code></pre></td></tr></table></figure>
-<h2 id="鏄剧ず鏁ｇ偣鍦ㄧ┖闂翠笉鍚岀淮搴︾殑鍒嗗竷鎯呭喌"><a href="#鏄剧ず鏁ｇ偣鍦ㄧ┖闂翠笉鍚岀淮搴︾殑鍒嗗竷鎯呭喌" class="headerlink" title="鏄剧ず鏁ｇ偣鍦ㄧ┖闂翠笉鍚岀淮搴︾殑鍒嗗竷鎯呭喌"></a>鏄剧ず鏁ｇ偣鍦ㄧ┖闂翠笉鍚岀淮搴︾殑鍒嗗竷鎯呭喌</h2><p>matplotlib鐨勫畼缃戝疄渚嬩腑鎻愬埌锛屽彲浠ラ噰鐢▃dir 瀛楁瀹炵幇2D鍐呭鍦?D鍥句笂鐨勭粯鍒讹紝杩欓噷瀹為檯涓婂彲浠ョ畝鍗曞皢zdir璁剧疆涓?D鍥句腑鈥滅己澶辩殑鈥濋偅涓淮搴︼紝濡備笅鎵€绀?/p>
-<p>鍦╔-Z骞抽潰涓婄粯鍒舵牳瀵嗗害浼拌鍥?/p>
+<h2 id="显示散点图的包围椭球"><a href="#显示散点图的包围椭球" class="headerlink" title="显示散点图的包围椭球"></a>显示散点图的包围椭球</h2><p>matplotlib中需要构造点阵以显示面，因此我们需要首先生成椭球面的XYZ坐标，然后绘制</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">draw_ellipsoid</span>(<span class="hljs-params">ax, data, color</span>):<br>    <span class="hljs-comment"># 计算椭球的中心</span><br>    center = np.mean(data, axis=<span class="hljs-number">1</span>)<br><br>    <span class="hljs-comment"># 计算椭球的半径</span><br>    radius = <span class="hljs-number">0.5</span> * (np.<span class="hljs-built_in">max</span>(data, axis=<span class="hljs-number">1</span>) - np.<span class="hljs-built_in">min</span>(data, axis=<span class="hljs-number">1</span>))<br><br>    <span class="hljs-comment"># 生成椭球的表面点</span><br>    u = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">2</span> * np.pi, <span class="hljs-number">100</span>)<br>    v = np.linspace(<span class="hljs-number">0</span>, np.pi, <span class="hljs-number">100</span>)<br>    x = center[<span class="hljs-number">0</span>] + radius[<span class="hljs-number">0</span>] * np.outer(np.cos(u), np.sin(v))<br>    y = center[<span class="hljs-number">1</span>] + radius[<span class="hljs-number">1</span>] * np.outer(np.sin(u), np.sin(v))<br>    z = center[<span class="hljs-number">2</span>] + radius[<span class="hljs-number">2</span>] * np.outer(np.ones(np.size(u)), np.cos(v))<br><br>    <span class="hljs-comment"># 绘制椭球</span><br>    ax.plot_surface(x, y, z, color=color, alpha=<span class="hljs-number">0.2</span>)<br></code></pre></td></tr></table></figure>
+<h2 id="显示散点在空间不同维度的分布情况"><a href="#显示散点在空间不同维度的分布情况" class="headerlink" title="显示散点在空间不同维度的分布情况"></a>显示散点在空间不同维度的分布情况</h2><p>matplotlib的官网实例中提到，可以采用zdir 字段实现2D内容在3D图上的绘制，这里实际上可以简单将zdir设置为2D图中“缺失的”那个维度，如下所示</p>
+<p>在X-Z平面上绘制核密度估计图</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">draw_kde3d_X2XZ</span>(<span class="hljs-params">ax, data,  color</span>):<br>    kde = gaussian_kde(data)<br>    xs = np.linspace(np.<span class="hljs-built_in">min</span>(data), np.<span class="hljs-built_in">max</span>(data), <span class="hljs-number">100</span>)<br>    ys = kde(xs)<br>    ax.plot(xs, ys*<span class="hljs-number">10</span>, zs=<span class="hljs-number">0</span>, zdir=<span class="hljs-string">&#x27;y&#x27;</span>, color=color)<br></code></pre></td></tr></table></figure>
-<p>鍦╕-Z骞抽潰涓婄粯鍒舵牳瀵嗗害浼拌鍥?/p>
+<p>在Y-Z平面上绘制核密度估计图</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">draw_kde3d_Y2YZ</span>(<span class="hljs-params">ax, data,  color</span>):<br>    kde = gaussian_kde(data)<br>    xs = np.linspace(np.<span class="hljs-built_in">min</span>(data), np.<span class="hljs-built_in">max</span>(data), <span class="hljs-number">100</span>)<br>    ys = kde(xs)<br>    ax.plot(xs,ys*<span class="hljs-number">100</span>,  zs=[<span class="hljs-number">1.2</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(data))], zdir=<span class="hljs-string">&#x27;x&#x27;</span>, color=color)<br></code></pre></td></tr></table></figure>
-<p>鍦╖-Y骞抽潰涓婄粯鍒舵牳瀵嗗害浼拌鍥?/p>
+<p>在Z-Y平面上绘制核密度估计图</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">draw_kde3d_Z2ZY</span>(<span class="hljs-params">ax, data,  color</span>):<br>    kde = gaussian_kde(data)<br>    xs = np.linspace(np.<span class="hljs-built_in">min</span>(data), np.<span class="hljs-built_in">max</span>(data), <span class="hljs-number">100</span>)<br>    ys = kde(xs)<br>    ax.plot(ys*<span class="hljs-number">80</span>,xs,  zs=<span class="hljs-number">0</span>, zdir=<span class="hljs-string">&#x27;x&#x27;</span>, color=color)<br></code></pre></td></tr></table></figure>
 
-<p>鍏跺疄杩欓噷zdir鍏跺疄灏辨槸涓庤缁樺埗鐨勫钩闈㈢浉鍨傜洿鐨勫潗鏍囪酱锛寊dir鍦ㄨ繖閲岃捣鍒扳€滀复鏃舵洿鎹㈠潗鏍囪酱鈥濈殑浣滅敤銆?/p>
-<p>鍏ㄩ儴浠ｇ爜</p>
+<p>其实这里zdir其实就是与要绘制的平面相垂直的坐标轴，zdir在这里起到“临时更换坐标轴”的作用。</p>
+<p>全部代码</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> scipy.stats <span class="hljs-keyword">import</span> gaussian_kde<br></code></pre></td></tr></table></figure>
 
-<h2 id="鍒涘缓3D鍥?1"><a href="#鍒涘缓3D鍥?1" class="headerlink" title="鍒涘缓3D鍥?></a>鍒涘缓3D鍥?/h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">ax = plt.figure().add_subplot(projection=<span class="hljs-string">&#x27;3d&#x27;</span>)<br>data=[]<br></code></pre></td></tr></table></figure>
+<h2 id="创建3D图-1"><a href="#创建3D图-1" class="headerlink" title="创建3D图"></a>创建3D图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">ax = plt.figure().add_subplot(projection=<span class="hljs-string">&#x27;3d&#x27;</span>)<br>data=[]<br></code></pre></td></tr></table></figure>
 
-<h2 id="闅忔満鐢熸垚data-1"><a href="#闅忔満鐢熸垚data-1" class="headerlink" title="闅忔満鐢熸垚data"></a>闅忔満鐢熸垚data</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">generate_data</span>(<span class="hljs-params">mean, std_dev</span>):<br>    <span class="hljs-keyword">return</span> np.random.normal(mean, std_dev, <span class="hljs-number">100</span>)<br>data.append(generate_data(<span class="hljs-number">0.8</span>, <span class="hljs-number">0.1</span>))<br>data.append(generate_data(<span class="hljs-number">15</span>, <span class="hljs-number">2</span>))<br>data.append(generate_data(<span class="hljs-number">60</span>, <span class="hljs-number">10</span>))<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">draw_ellipsoid</span>(<span class="hljs-params">ax, data, color</span>):<br>    <span class="hljs-comment"># 璁＄畻妞悆鐨勪腑蹇?/span><br>    center = np.mean(data, axis=<span class="hljs-number">1</span>)<br>    <span class="hljs-comment"># 璁＄畻妞悆鐨勫崐寰?/span><br>    radius = <span class="hljs-number">0.5</span> * (np.<span class="hljs-built_in">max</span>(data, axis=<span class="hljs-number">1</span>) - np.<span class="hljs-built_in">min</span>(data, axis=<span class="hljs-number">1</span>))<br>    <span class="hljs-comment"># 鐢熸垚妞悆鐨勮〃闈㈢偣</span><br>    u = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">2</span> * np.pi, <span class="hljs-number">100</span>)<br>    v = np.linspace(<span class="hljs-number">0</span>, np.pi, <span class="hljs-number">100</span>)<br>    x = center[<span class="hljs-number">0</span>] + radius[<span class="hljs-number">0</span>] * np.outer(np.cos(u), np.sin(v))<br>    y = center[<span class="hljs-number">1</span>] + radius[<span class="hljs-number">1</span>] * np.outer(np.sin(u), np.sin(v))<br>    z = center[<span class="hljs-number">2</span>] + radius[<span class="hljs-number">2</span>] * np.outer(np.ones(np.size(u)), np.cos(v))<br>    <span class="hljs-comment"># 缁樺埗妞悆</span><br>    ax.plot_surface(x, y, z, color=color, alpha=<span class="hljs-number">0.2</span>)<br></code></pre></td></tr></table></figure>
+<h2 id="随机生成data-1"><a href="#随机生成data-1" class="headerlink" title="随机生成data"></a>随机生成data</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">generate_data</span>(<span class="hljs-params">mean, std_dev</span>):<br>    <span class="hljs-keyword">return</span> np.random.normal(mean, std_dev, <span class="hljs-number">100</span>)<br>data.append(generate_data(<span class="hljs-number">0.8</span>, <span class="hljs-number">0.1</span>))<br>data.append(generate_data(<span class="hljs-number">15</span>, <span class="hljs-number">2</span>))<br>data.append(generate_data(<span class="hljs-number">60</span>, <span class="hljs-number">10</span>))<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">draw_ellipsoid</span>(<span class="hljs-params">ax, data, color</span>):<br>    <span class="hljs-comment"># 计算椭球的中心</span><br>    center = np.mean(data, axis=<span class="hljs-number">1</span>)<br>    <span class="hljs-comment"># 计算椭球的半径</span><br>    radius = <span class="hljs-number">0.5</span> * (np.<span class="hljs-built_in">max</span>(data, axis=<span class="hljs-number">1</span>) - np.<span class="hljs-built_in">min</span>(data, axis=<span class="hljs-number">1</span>))<br>    <span class="hljs-comment"># 生成椭球的表面点</span><br>    u = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">2</span> * np.pi, <span class="hljs-number">100</span>)<br>    v = np.linspace(<span class="hljs-number">0</span>, np.pi, <span class="hljs-number">100</span>)<br>    x = center[<span class="hljs-number">0</span>] + radius[<span class="hljs-number">0</span>] * np.outer(np.cos(u), np.sin(v))<br>    y = center[<span class="hljs-number">1</span>] + radius[<span class="hljs-number">1</span>] * np.outer(np.sin(u), np.sin(v))<br>    z = center[<span class="hljs-number">2</span>] + radius[<span class="hljs-number">2</span>] * np.outer(np.ones(np.size(u)), np.cos(v))<br>    <span class="hljs-comment"># 绘制椭球</span><br>    ax.plot_surface(x, y, z, color=color, alpha=<span class="hljs-number">0.2</span>)<br></code></pre></td></tr></table></figure>
 
-<h2 id="鍦╔-Z骞抽潰涓婄粯鍒舵牳瀵嗗害浼拌鍥?><a href="#鍦╔-Z骞抽潰涓婄粯鍒舵牳瀵嗗害浼拌鍥? class="headerlink" title="鍦╔-Z骞抽潰涓婄粯鍒舵牳瀵嗗害浼拌鍥?></a>鍦╔-Z骞抽潰涓婄粯鍒舵牳瀵嗗害浼拌鍥?/h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">draw_kde3d_X2XZ</span>(<span class="hljs-params">ax, data,  color</span>):<br>    kde = gaussian_kde(data)<br>    xs = np.linspace(np.<span class="hljs-built_in">min</span>(data), np.<span class="hljs-built_in">max</span>(data), <span class="hljs-number">100</span>)<br>    ys = kde(xs)<br>    ax.plot(xs, ys*<span class="hljs-number">10</span>, zs=<span class="hljs-number">0</span>, zdir=<span class="hljs-string">&#x27;y&#x27;</span>, color=color)<br></code></pre></td></tr></table></figure>
+<h2 id="在X-Z平面上绘制核密度估计图"><a href="#在X-Z平面上绘制核密度估计图" class="headerlink" title="在X-Z平面上绘制核密度估计图"></a>在X-Z平面上绘制核密度估计图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">draw_kde3d_X2XZ</span>(<span class="hljs-params">ax, data,  color</span>):<br>    kde = gaussian_kde(data)<br>    xs = np.linspace(np.<span class="hljs-built_in">min</span>(data), np.<span class="hljs-built_in">max</span>(data), <span class="hljs-number">100</span>)<br>    ys = kde(xs)<br>    ax.plot(xs, ys*<span class="hljs-number">10</span>, zs=<span class="hljs-number">0</span>, zdir=<span class="hljs-string">&#x27;y&#x27;</span>, color=color)<br></code></pre></td></tr></table></figure>
 
-<h2 id="鍦╕-Z骞抽潰涓婄粯鍒舵牳瀵嗗害浼拌鍥?><a href="#鍦╕-Z骞抽潰涓婄粯鍒舵牳瀵嗗害浼拌鍥? class="headerlink" title="鍦╕-Z骞抽潰涓婄粯鍒舵牳瀵嗗害浼拌鍥?></a>鍦╕-Z骞抽潰涓婄粯鍒舵牳瀵嗗害浼拌鍥?/h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">draw_kde3d_Y2YZ</span>(<span class="hljs-params">ax, data,  color</span>):<br>    kde = gaussian_kde(data)<br>    xs = np.linspace(np.<span class="hljs-built_in">min</span>(data), np.<span class="hljs-built_in">max</span>(data), <span class="hljs-number">100</span>)<br>    ys = kde(xs)<br>    ax.plot(xs,ys*<span class="hljs-number">100</span>,  zs=[<span class="hljs-number">1.2</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(data))], zdir=<span class="hljs-string">&#x27;x&#x27;</span>, color=color)<br></code></pre></td></tr></table></figure>
+<h2 id="在Y-Z平面上绘制核密度估计图"><a href="#在Y-Z平面上绘制核密度估计图" class="headerlink" title="在Y-Z平面上绘制核密度估计图"></a>在Y-Z平面上绘制核密度估计图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">draw_kde3d_Y2YZ</span>(<span class="hljs-params">ax, data,  color</span>):<br>    kde = gaussian_kde(data)<br>    xs = np.linspace(np.<span class="hljs-built_in">min</span>(data), np.<span class="hljs-built_in">max</span>(data), <span class="hljs-number">100</span>)<br>    ys = kde(xs)<br>    ax.plot(xs,ys*<span class="hljs-number">100</span>,  zs=[<span class="hljs-number">1.2</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(data))], zdir=<span class="hljs-string">&#x27;x&#x27;</span>, color=color)<br></code></pre></td></tr></table></figure>
 
-<h2 id="鍦╖-Y骞抽潰涓婄粯鍒舵牳瀵嗗害浼拌鍥?><a href="#鍦╖-Y骞抽潰涓婄粯鍒舵牳瀵嗗害浼拌鍥? class="headerlink" title="鍦╖-Y骞抽潰涓婄粯鍒舵牳瀵嗗害浼拌鍥?></a>鍦╖-Y骞抽潰涓婄粯鍒舵牳瀵嗗害浼拌鍥?/h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">draw_kde3d_Z2ZY</span>(<span class="hljs-params">ax, data,  color</span>):<br>    kde = gaussian_kde(data)<br>    xs = np.linspace(np.<span class="hljs-built_in">min</span>(data), np.<span class="hljs-built_in">max</span>(data), <span class="hljs-number">100</span>)<br>    ys = kde(xs)<br>    ax.plot(ys*<span class="hljs-number">80</span>,xs,  zs=<span class="hljs-number">0</span>, zdir=<span class="hljs-string">&#x27;x&#x27;</span>, color=color)<br></code></pre></td></tr></table></figure>
+<h2 id="在Z-Y平面上绘制核密度估计图"><a href="#在Z-Y平面上绘制核密度估计图" class="headerlink" title="在Z-Y平面上绘制核密度估计图"></a>在Z-Y平面上绘制核密度估计图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">draw_kde3d_Z2ZY</span>(<span class="hljs-params">ax, data,  color</span>):<br>    kde = gaussian_kde(data)<br>    xs = np.linspace(np.<span class="hljs-built_in">min</span>(data), np.<span class="hljs-built_in">max</span>(data), <span class="hljs-number">100</span>)<br>    ys = kde(xs)<br>    ax.plot(ys*<span class="hljs-number">80</span>,xs,  zs=<span class="hljs-number">0</span>, zdir=<span class="hljs-string">&#x27;x&#x27;</span>, color=color)<br></code></pre></td></tr></table></figure>
 
 
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">xyzlims=(<span class="hljs-number">0</span>, <span class="hljs-number">1.2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">22</span>, <span class="hljs-number">0</span>, <span class="hljs-number">105</span>)<br></code></pre></td></tr></table></figure>
 
-<p>缁樺埗鏁ｇ偣鍥?br>ax.scatter(data[0], data[1], data[2], c&#x3D;鈥檊鈥? marker&#x3D;鈥?鈥? s&#x3D;10, label&#x3D;鈥檇ata鈥?</p>
-<p>缁樺埗妞悆</p>
+<p>绘制散点图<br>ax.scatter(data[0], data[1], data[2], c&#x3D;’g’, marker&#x3D;’*’, s&#x3D;10, label&#x3D;’data’)</p>
+<p>绘制椭球</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">draw_ellipsoid(ax, data, <span class="hljs-string">&#x27;g&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
-<p>缁樺埗X杞存柟鍚戠殑鏍稿瘑搴︿及璁?/p>
+<p>绘制X轴方向的核密度估计</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">draw_kde3d_X2XZ(ax, data[<span class="hljs-number">0</span>], <span class="hljs-string">&#x27;g&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
-<p>缁樺埗Y杞存柟鍚戠殑鏍稿瘑搴︿及璁?/p>
+<p>绘制Y轴方向的核密度估计</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">draw_kde3d_Y2YZ(ax, data[<span class="hljs-number">1</span>], <span class="hljs-string">&#x27;g&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
-<p>缁樺埗Z杞存柟鍚戠殑鏍稿瘑搴︿及璁?/p>
+<p>绘制Z轴方向的核密度估计</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">draw_kde3d_Z2ZY(ax, data[<span class="hljs-number">2</span>], <span class="hljs-string">&#x27;g&#x27;</span>)<br>ax.<span class="hljs-built_in">set</span>(xlim=(<span class="hljs-number">0</span>, <span class="hljs-number">1.2</span>), ylim=(<span class="hljs-number">0</span>, <span class="hljs-number">22</span>), zlim=(<span class="hljs-number">0</span>, <span class="hljs-number">105</span>))<br><span class="hljs-type">Set</span> zoom <span class="hljs-keyword">and</span> angle view<br>ax.view_init(<span class="hljs-number">20</span>, -<span class="hljs-number">35</span>, <span class="hljs-number">0</span>)<br>ax.set_box_aspect(<span class="hljs-literal">None</span>, zoom=<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
 
-<p>璁剧疆鍧愭爣杞寸殑缃戞牸绾块鑹?/p>
+<p>设置坐标轴的网格线颜色</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">ax.xaxis.pane.set_edgecolor((<span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>))<br>ax.yaxis.pane.set_edgecolor((<span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>))<br>ax.zaxis.pane.set_edgecolor((<span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>))<br>ax.set_xlabel(<span class="hljs-string">&#x27;X&#x27;</span>)<br>ax.set_ylabel(<span class="hljs-string">&#x27;Y&#x27;</span>)<br>ax.set_zlabel(<span class="hljs-string">&#x27;Z&#x27;</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
 
-<h2 id="瀹炵幇鏁堟灉"><a href="#瀹炵幇鏁堟灉" class="headerlink" title="瀹炵幇鏁堟灉"></a>瀹炵幇鏁堟灉</h2><p><img src="/2024/12/02/matplotlib%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E6%95%A3%E7%82%B9%E5%9B%BE/%E6%95%88%E6%9E%9C%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="鏁堟灉鍥?></p>
-<h2 id="涓€鐐瑰皬鏀硅繘"><a href="#涓€鐐瑰皬鏀硅繘" class="headerlink" title="涓€鐐瑰皬鏀硅繘"></a>涓€鐐瑰皬鏀硅繘</h2><p>鏈変簺鏃跺€欙紝鎴戜滑鍙兘鏈夊绉嶆暟鎹渶瑕佽繘琛屾瘮杈冦€傝繖鏃讹紝鍧愭爣绯汇€佺綉鏍肩瓑鍏冪礌浼氬鎴戜滑鐨勫睍绀洪€犳垚骞叉壈銆傚洜姝わ紝杩欓噷鍙互鍏抽棴杩欎簺鍐呭鐨勬樉绀猴紝骞朵娇鐢ㄧ珛鏂逛綋琛ㄧず涓夌淮绌洪棿銆?/p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">showbox</span>(<span class="hljs-params">data,ax</span>):  <br>    x, y, z = <span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>  <span class="hljs-comment">#鐩掑瓙鍧愭爣</span><br>    dx, dy, dz = data  <span class="hljs-comment">#鐩掑瓙闀裤€佸銆侀珮</span><br>    ax.bar3d(x, y, z, dx, dy, dz, color=<span class="hljs-string">&quot;green&quot;</span>,zsort=<span class="hljs-string">&#x27;average&#x27;</span>,edgecolor=<span class="hljs-string">&#x27;black&#x27;</span>,linewidth=<span class="hljs-number">1</span>,alpha=<span class="hljs-number">0</span>)<br><br>路路路鍏朵粬浠ｇ爜路路路<br></code></pre></td></tr></table></figure>
+<h2 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h2><p><img src="/2024/12/02/matplotlib%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E6%95%A3%E7%82%B9%E5%9B%BE/%E6%95%88%E6%9E%9C%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="效果图"></p>
+<h2 id="一点小改进"><a href="#一点小改进" class="headerlink" title="一点小改进"></a>一点小改进</h2><p>有些时候，我们可能有多种数据需要进行比较。这时，坐标系、网格等元素会对我们的展示造成干扰。因此，这里可以关闭这些内容的显示，并使用立方体表示三维空间。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">showbox</span>(<span class="hljs-params">data,ax</span>):  <br>    x, y, z = <span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>  <span class="hljs-comment">#盒子坐标</span><br>    dx, dy, dz = data  <span class="hljs-comment">#盒子长、宽、高</span><br>    ax.bar3d(x, y, z, dx, dy, dz, color=<span class="hljs-string">&quot;green&quot;</span>,zsort=<span class="hljs-string">&#x27;average&#x27;</span>,edgecolor=<span class="hljs-string">&#x27;black&#x27;</span>,linewidth=<span class="hljs-number">1</span>,alpha=<span class="hljs-number">0</span>)<br><br>···其他代码···<br></code></pre></td></tr></table></figure>
 
-<p>璁剧疆鍧愭爣杞寸殑鑳屾櫙棰滆壊</p>
+<p>设置坐标轴的背景颜色</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">ax.xaxis.pane.fill = <span class="hljs-literal">False</span><br>ax.yaxis.pane.fill = <span class="hljs-literal">False</span><br>ax.zaxis.pane.fill = <span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
 
-<p>璁剧疆鍧愭爣杞翠笉鍙</p>
+<p>设置坐标轴不可见</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">ax.axis(<span class="hljs-string">&#x27;off&#x27;</span>)<br>ax.grid(<span class="hljs-literal">False</span>)<br></code></pre></td></tr></table></figure>
 
-<p>璁剧疆鍧愭爣杞寸殑缃戞牸绾块鑹?/p>
+<p>设置坐标轴的网格线颜色</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">ax.xaxis.pane.set_edgecolor((<span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>))<br>ax.yaxis.pane.set_edgecolor((<span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>))<br>ax.zaxis.pane.set_edgecolor((<span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>))<br></code></pre></td></tr></table></figure>
 
-<p>鍏抽棴鍧愭爣杞寸殑鍒诲害</p>
+<p>关闭坐标轴的刻度</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">ax.set_xticks([])<br>ax.set_yticks([])<br>ax.set_zticks([])<br>box = (<span class="hljs-number">1.2</span>,<span class="hljs-number">22</span>,<span class="hljs-number">105</span>)<br></code></pre></td></tr></table></figure>
 
-<p>鏄剧ず绔嬫柟浣?/p>
+<p>显示立方体</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">showbox(box,ax)<br>ax.set_xlabel(<span class="hljs-string">&#x27;X&#x27;</span>)<br>ax.set_ylabel(<span class="hljs-string">&#x27;Y&#x27;</span>)<br>ax.set_zlabel(<span class="hljs-string">&#x27;Z&#x27;</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
 
 
-<h2 id="鏈€缁堟晥鏋?><a href="#鏈€缁堟晥鏋? class="headerlink" title="鏈€缁堟晥鏋?></a>鏈€缁堟晥鏋?/h2><p><img src="/2024/12/02/matplotlib%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E6%95%A3%E7%82%B9%E5%9B%BE/%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="鏈€缁堟晥鏋?></p>
+<h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><p><img src="/2024/12/02/matplotlib%E7%BB%98%E5%88%B6%E4%B8%89%E7%BB%B4%E6%95%A3%E7%82%B9%E5%9B%BE/%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="最终效果"></p>
 
                 
               </div>
@@ -473,8 +473,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Matplotlib 缁樺埗涓夌淮鏁ｇ偣鍥句笌鍖呭洿妞悆鍙婃牳瀵嗗害鍒嗘瀽</div>
-      <div>https://hexiao2001.github.io/2024/12/02/matplotlib缁樺埗涓夌淮鏁ｇ偣鍥?</div>
+      <div>Matplotlib 绘制三维散点图与包围椭球及核密度分析</div>
+      <div>https://hexiao2001.github.io/2024/12/02/matplotlib绘制三维散点图/</div>
     </div>
     <div class="license-meta">
       
@@ -518,9 +518,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/" title="Clash Verge 璁㈤槄瑙勫垯鎵╁睍锛氶伩鍏嶅鏈綉绔欒蛋浠ｇ悊">
+                      <a href="/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/" title="Clash Verge 订阅规则扩展：避免学术网站走代理">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Clash Verge 璁㈤槄瑙勫垯鎵╁睍锛氶伩鍏嶅鏈綉绔欒蛋浠ｇ悊</span>
+                        <span class="hidden-mobile">Clash Verge 订阅规则扩展：避免学术网站走代理</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -851,7 +851,7 @@
 
 
 
-<!-- 涓婚鐨勫惎鍔ㄩ」锛屽皢瀹冧繚鎸佸湪鏈€搴曢儴 -->
+<!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
@@ -863,5 +863,3 @@
   </noscript>
 </body>
 </html>
-
-
