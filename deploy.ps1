@@ -153,14 +153,10 @@ try {
     Write-Host "https://hexiao2001.github.io/" -ForegroundColor Yellow
     Write-Host "`nNote: GitHub Pages may take a few minutes to update" -ForegroundColor Gray
 
-    # Optional: Submit IndexNow
+    # Submit IndexNow
     if (Test-Path "submit_indexnow.ps1") {
-        Write-Host "`nSubmit URLs to search engines? (Y/N) " -NoNewline -ForegroundColor Cyan
-        $response = Read-Host
-        if ($response -eq "Y" -or $response -eq "y") {
-            Write-Info "Running submit_indexnow.ps1..."
-            & .\submit_indexnow.ps1
-        }
+        Write-Info "Submitting URLs to search engines..."
+        & .\submit_indexnow.ps1
     }
 
 } catch {
