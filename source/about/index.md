@@ -5,7 +5,7 @@ comment: True
 ---
 
 
-Welcome to my personal academic page! I am Xiao He, a Ph.D. student specializing in Geographic Information Science at Central South University, China. 
+Welcome to my personal academic page! 
 My research interests encompass Spatial networks, Urban computing, and complex systems.
 Feel free to explore my publications, research projects, and other academic contributions listed below.
 Please don't hesitate to reach out if you have any questions or collaboration ideas!
