@@ -1,0 +1,11 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+	sshCommand = ssh -i C:/Users/86138/.ssh/id_ed25519 -o IdentitiesOnly=yes
+[remote "origin"]
+	url = git@github.com:HeXiao2001/HeXiao2001.github.io.git
+	fetch = +refs/heads/*:refs/remotes/origin/*

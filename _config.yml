@@ -3,13 +3,13 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: HeX's Blog
+title: Xiao He's Blog
 subtitle: Stay Hungry Stay Foolish | by HeXiao 何骁
-description: "This is He Xiao's personal blog"
+description: "Research blog on urban computing, spatial analysis, community detection, and human mobility. Sharing insights on fuzzy theory, hypergraph methods, and data science applications."
 avatar: /images/me.jpg
 favicon: /images/me.jpg
-keywords: 
-author: He Xiao
+keywords: urban computing, spatial analysis, community detection, human mobility, fuzzy theory, hypergraph, data science, GIS, ProOE, HEProOE
+author: Xiao He
 language: 
   - en
   - zh-CN
@@ -105,20 +105,56 @@ ignore:
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
+
+plugins:
+  - hexo-tag-video
+
 ## Themes: https://hexo.io/themes/
 theme: fluid
+
+# Submit URLs to search engines
+# Note: Using IndexNow protocol for automatic URL submission
+hexo_submit_urls_to_search_engine:
+  submit_condition: count
+  count: 100
+  period: 900
+  google: 0
+  bing: 0
+  baidu: 0
+  txt_path: submit_urls.txt
+  baidu_host: https://hexiao2001.github.io
+  baidu_token: YOUR_BAIDU_TOKEN
+  bing_host: https://hexiao2001.github.io
+  bing_token: YOUR_BING_TOKEN
+  google_host: https://hexiao2001.github.io
+  google_key_file: google_key.json
+  google_proxy: 0
+  replace: 0
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: git
-  repository: git@github.com:HeXiao2001/HeXiao2001.github.io.git
-  branch: master
+  - type: git
+    repository: git@github.com:HeXiao2001/HeXiao2001.github.io.git
+    branch: master
 
 
-#引入鸿蒙字体
+# 引入鸿蒙字体和其他自定义脚本
 inject:
-head:  <link rel="preconnect" href="https://s1.hdslb.com/" /> - <link rel="stylesheet" href="//s1.hdslb.com/bfs/static/jinkela/long/font/regular.css" media="all" onload="this.media='all'" /> - <link rel="stylesheet" href="//s1.hdslb.com/bfs/static/jinkela/long/font/medium.css" media="all" onload="this.media='all'" />
+  head:
+    - <link rel="preconnect" href="https://s1.hdslb.com/" />
+    - <link rel="stylesheet" href="//s1.hdslb.com/bfs/static/jinkela/long/font/regular.css" media="all" onload="this.media='all'" onerror="this.onerror=null;" />
+    - <link rel="stylesheet" href="//s1.hdslb.com/bfs/static/jinkela/long/font/medium.css" media="all" onload="this.media='all'" onerror="this.onerror=null;" />
+    - <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;t.onerror=function(){console.log("Clarity blocked")};y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "u7szbkfie3");</script>
 
 sitemap:
   path: sitemap.xml
+
+
+analytics:
+    google_analytics:
+        enable: true
+        measurement_id: G-P1MR82JQ4F
+    microsoft_clarity:
+        enable: true
+        project_id: u7szbkfie3

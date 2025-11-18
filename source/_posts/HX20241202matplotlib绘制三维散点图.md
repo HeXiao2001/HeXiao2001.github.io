@@ -1,14 +1,18 @@
 ---
-title: matplotlib绘制三维散点图，并添加包围椭球及各维度核密度
-tags: [plot, python]
-categories: [technique]
+title: Matplotlib 绘制三维散点图与包围椭球及核密度分析
+tags:
+  - plot
+  - python
+categories:
+  - technique
 poster:
   topic: 标题上方的小字
   headline: 大标题
   caption: 标题下方的小字
   color: 标题颜色
+abbrlink: 25870
 date: 2024-12-02 21:22:59
-description:
+description: 详细教程：使用 Matplotlib 绘制精美的三维散点图，添加包围椭球，并在各个维度上展示核密度分布。适用于数据可视化和科学计算。
 cover:
 banner:
 sticky:
@@ -26,11 +30,11 @@ rightbar:
 h1:
 type:
 ---
-# 背景
+## 背景
 我们在绘制三维散点时经常需要在一张图中描述：1.散点在空间中的分布状态；2.散点在空间不同维度的分布情况。
 下面介绍一种：通过椭球描述散点在空间中的分布状态，并通过核密度曲线描述散点在空间不同维度的分布情况的方法。
 
-# 实现
+## 实现
 导入必要的库，数据准备
 ```python
 import matplotlib.pyplot as plt
@@ -38,12 +42,12 @@ import numpy as np
 from scipy.stats import gaussian_kde  # 导入高斯核函数
 ```
 
-# 创建3D图
+## 创建3D图
 ```python
 ax = plt.figure().add_subplot(projection='3d')
 data=[]
 ```
-# 随机生成data
+## 随机生成data
 定义一个函数来生成数据
 ```python
 def generate_data(mean, std_dev):
@@ -52,7 +56,7 @@ data.append(generate_data(0.8, 0.1))
 data.append(generate_data(15, 2))
 data.append(generate_data(60, 10))
 ```
-# 显示散点图的包围椭球
+## 显示散点图的包围椭球
 matplotlib中需要构造点阵以显示面，因此我们需要首先生成椭球面的XYZ坐标，然后绘制
 ```python
 def draw_ellipsoid(ax, data, color):
@@ -72,7 +76,7 @@ def draw_ellipsoid(ax, data, color):
     # 绘制椭球
     ax.plot_surface(x, y, z, color=color, alpha=0.2)
 ```
-# 显示散点在空间不同维度的分布情况
+## 显示散点在空间不同维度的分布情况
 matplotlib的官网实例中提到，可以采用zdir 字段实现2D内容在3D图上的绘制，这里实际上可以简单将zdir设置为2D图中“缺失的”那个维度，如下所示
 
 在X-Z平面上绘制核密度估计图
@@ -111,14 +115,14 @@ import numpy as np
 from scipy.stats import gaussian_kde
 ```
 
-# 创建3D图
+## 创建3D图
 
 ```python
 ax = plt.figure().add_subplot(projection='3d')
 data=[]
 ```
 
-# 随机生成data
+## 随机生成data
    
 ```python
 def generate_data(mean, std_dev):
@@ -142,7 +146,7 @@ def draw_ellipsoid(ax, data, color):
     ax.plot_surface(x, y, z, color=color, alpha=0.2)
 ```
 
-# 在X-Z平面上绘制核密度估计图
+## 在X-Z平面上绘制核密度估计图
 
     
 ```python
@@ -153,7 +157,7 @@ def draw_kde3d_X2XZ(ax, data,  color):
     ax.plot(xs, ys*10, zs=0, zdir='y', color=color)
 ```
 
-# 在Y-Z平面上绘制核密度估计图
+## 在Y-Z平面上绘制核密度估计图
 
     
 ```python
@@ -164,7 +168,7 @@ def draw_kde3d_Y2YZ(ax, data,  color):
     ax.plot(xs,ys*100,  zs=[1.2 for _ in range(len(data))], zdir='x', color=color)
 ```
 
-# 在Z-Y平面上绘制核密度估计图
+## 在Z-Y平面上绘制核密度估计图
 
 
 
@@ -230,10 +234,10 @@ ax.set_zlabel('Z')
 plt.show()
 ```
 
-# 实现效果
+## 实现效果
 ![效果图](效果图.png)
 
-# 一点小改进
+## 一点小改进
 有些时候，我们可能有多种数据需要进行比较。这时，坐标系、网格等元素会对我们的展示造成干扰。因此，这里可以关闭这些内容的显示，并使用立方体表示三维空间。
 
 
@@ -296,5 +300,5 @@ plt.show()
 ```
 
 
-# 最终效果
+## 最终效果
 ![最终效果](最终效果图.png)

@@ -1,12 +1,13 @@
 ---
 title: About Me
 layout: about
-date: 2024-12-03 21:00:12
+comment: True
 ---
 
-### Xiao He (何骁)
-<hexiaoemail@csu.edu.cn> | +86 18390838656 | Department of Geo-informatics, Central South University, Changsha, China  
-[Google Scholar](https://scholar.google.com/citations?user=rDEquOIAAAAJ) | [ResearchGate](https://www.researchgate.net/profile/Xiao-He-62)
+
+<hexiaoemail@csu.edu.cn> 
+[Google Scholar](https://scholar.google.com/citations?user=rDEquOIAAAAJ)
+[ResearchGate](https://www.researchgate.net/profile/Xiao-He-62)
 
 ---
 
@@ -14,7 +15,7 @@ date: 2024-12-03 21:00:12
 
 **Central South University**, School of Geosciences and Info-Physics | Changsha, China
 *Ph.D. Student in Geographic Information Science* | Sep. 2023 – Present
-- Supervisor: Professor Min Deng and Associate Professor Baoju Liu
+- Supervisor: Professor Min Deng, Associate Professor Baoju Liu
 
 **Central South University**, School of Geosciences and Info-Physics | Changsha, China
 *B.S. in Geographic Information Science* | Sep. 2019 – Jun. 2023
@@ -32,8 +33,8 @@ date: 2024-12-03 21:00:12
 
 ### **PUBLICATIONS**
 
-- **He, X.**, Liu, B., Shi, Y., Tang, Z., Deng, M., & Tang, J. (2025). A probabilistic optimal estimation method for detecting spatial fuzzy communities. *International Journal of Geographical Information Science*, 1–33. [https://doi.org/10.1080/13658816.2025.2483850](https://doi.org/10.1080/13658816.2025.2483850)
-- **He, X.**, Tang, Z., Liu, B., Duan, J., & Deng, M. (in press). HEProOE: A Hyperedge Enhanced Probabilistic Optimal Estimation method for detecting Spatial Fuzzy Communities. *Scientific Reports*.
+- **He, X.**, Liu, B., Shi, Y., Tang, Z., Deng, M., & Tang, J. (2025). [A probabilistic optimal estimation method for detecting spatial fuzzy communities](https://hexiao2001.github.io/2025/04/05/ProOE/). *International Journal of Geographical Information Science*, 1–33. [https://doi.org/10.1080/13658816.2025.2483850](https://doi.org/10.1080/13658816.2025.2483850)    
+- **He, X.**, Tang, Z., Liu, B., Duan, J., & Deng, M. (in press). [HEProOE: A Hyperedge Enhanced Probabilistic Optimal Estimation method for detecting Spatial Fuzzy Communities](https://hexiao2001.github.io/2025/11/17/HEProOE/). *Scientific Reports*. 
 - Zhao, B., **He, X.**, Liu, B., Tang, J., Deng, M., & Liu, H. (2023). Detecting urban commercial districts by fusing points of interest and population heat data with region-growing algorithms. *ISPRS International Journal of Geo-Information*, 12(3), 96. [https://doi.org/10.3390/ijgi12030096](https://doi.org/10.3390/ijgi12030096)
 - Liu, B., Tang, Z., Deng, M., Shi, Y., **He, X.**, & Huang, B. (2024). Estimation of travel flux between urban blocks by combining spatio-temporal and purpose correlation. *Journal of Transport Geography*, 116, 103836. [https://doi.org/10.1016/j.jtrangeo.2024.103836](https://doi.org/10.1016/j.jtrangeo.2024.103836)
 
@@ -56,6 +57,9 @@ date: 2024-12-03 21:00:12
 
 **The 11th National Doctoral Forum on Geographic Information Science** | Nanjing, China
 *Oral Presentation: A probabilistic optimal estimation method for detecting spatial fuzzy communities* | Dec. 2024
+
+**2024 National Doctoral Forum for Surveying, Mapping, and Remote Sensing Disciplines** | Zhuhai, China
+*Oral Presentation: A probabilistic optimal estimation method for detecting spatial fuzzy communities* | Nov. 2024
 
 ---
 

@@ -1,18 +1,16 @@
 ---
-title: >-
-  HEProOE: A Hyperedge Enhanced Probabilistic Optimal Estimation Method for
-  Detecting Spatial Fuzzy Communities
+title: "HEProOE: Hyperedge-Enhanced Spatial Community Detection Method"
 tags:
-  - Spatial Analysis
   - Community Detection
+  - Human Mobility
+  - Fuzzy theory
   - Hypergraph
   - Urban Computing
 categories:
   - Research
-  - Technique
+  - Methodology
 description: >-
-  Introducing HEProOE, an extension of the ProOE model that integrates
-  hyperedges to ensure semantic consistency in spatial community detection.
+  HEProOE extends the ProOE model by integrating hyperedges to represent indivisible regions, ensuring semantic consistency in spatial community detection. This advanced method addresses fragmentation issues in mobility-based community detection.
 cover: Figure1.png
 abbrlink: 37179
 date: 2025-11-17 18:00:00
@@ -21,7 +19,7 @@ date: 2025-11-17 18:00:00
 Building upon our previous work with ProOE, we are thrilled to introduce the **Hyperedge-Enhanced Probabilistic Optimal Estimation (HEProOE)** method. This advanced model addresses a key limitation in mobility-based community detection: the fragmentation of large, semantically consistent areas. HEProOE integrates hyperedges to represent these "Indivisible Regions" (IRs), ensuring that the detected communities are not only structurally sound but also functionally coherent.
 
 - **Paper:** The full manuscript is currently in production.
-- **GitHub Repository:** The data and code can be requested from the corresponding author or the first author.
+- **GitHub Repository:** The data and code can be requested from me.
 
 ---
 

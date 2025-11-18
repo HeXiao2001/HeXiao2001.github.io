@@ -12,8 +12,10 @@
     "version": "7.3.0"
   },
   "dependencies": {
+    "@microsoft/clarity": "^1.0.0",
     "hexo": "^7.3.0",
     "hexo-abbrlink": "^2.2.1",
+    "hexo-analytics": "^0.1.1",
     "hexo-deployer-git": "^4.0.0",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-baidu-sitemap": "^0.1.9",
@@ -26,6 +28,10 @@
     "hexo-renderer-pug": "^3.0.0",
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0",
+    "hexo-submit-urls-to-search-engine": "^2.1.0",
+    "hexo-tag-dplayer": "^0.3.3",
+    "hexo-tag-videojs": "^0.0.5",
+    "hexo-tag-videojs2": "^0.8.5",
     "hexo-theme-butterfly": "^5.2.2",
     "hexo-theme-fluid": "^1.9.8",
     "hexo-theme-landscape": "^1.0.0",
