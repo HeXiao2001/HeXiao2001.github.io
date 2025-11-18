@@ -19,3 +19,10 @@ hexo clean：此命令用于清理生成的静态文件和缓存文件。在运�
 三、Hexo 组合命令
 
 Hexo 还支持组合命令，以便更高效地执行任务。例如，hexo s -g 命令将同时启动本地服务器并生成静态文件，这样您可以在预览博客的同时确保生成的静态文件是最新的。同样，hexo d -g 命令将同时生成静态文件并部署到远程服务器。
+
+
+
+组合命令
+
+
+powershell.exe -ExecutionPolicy Bypass -File .\deploy.ps1
