@@ -5,9 +5,11 @@ comment: True
 ---
 
 
-<hexiaoemail@csu.edu.cn> 
-[Google Scholar](https://scholar.google.com/citations?user=rDEquOIAAAAJ)
-[ResearchGate](https://www.researchgate.net/profile/Xiao-He-62)
+Welcome to my personal academic page! I am Xiao He, a Ph.D. student specializing in Geographic Information Science at Central South University, China. 
+My research interests encompass Spatial networks, Urban computing, and complex systems.
+Feel free to explore my publications, research projects, and other academic contributions listed below.
+Please don't hesitate to reach out if you have any questions or collaboration ideas!
+
 
 ---
 
