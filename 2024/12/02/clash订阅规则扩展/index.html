@@ -42,12 +42,12 @@
   <meta name="author" content="Xiao He">
   <meta name="keywords" content="urban computing, spatial analysis, community detection, human mobility, fuzzy theory, hypergraph, data science, GIS, ProOE, HEProOE">
   
-    <meta name="description" content="教你如何配置 Clash Verge 订阅扩展规则，防止学术网站、数据库等重要资源走代理，避免访问异常和 IP 限制问题。">
+    <meta name="description" content="教你如何配置 Clash Verge 订阅扩展规则，防止学术网站、数据库等重要资源走代理，避免访问异常和 IP 限制问题�?>
 <meta property="og:type" content="article">
 <meta property="og:title" content="Clash Verge 订阅规则扩展：避免学术网站走代理">
 <meta property="og:url" content="https://hexiao2001.github.io/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/index.html">
 <meta property="og:site_name" content="Xiao He&#39;s Blog">
-<meta property="og:description" content="教你如何配置 Clash Verge 订阅扩展规则，防止学术网站、数据库等重要资源走代理，避免访问异常和 IP 限制问题。">
+<meta property="og:description" content="教你如何配置 Clash Verge 订阅扩展规则，防止学术网站、数据库等重要资源走代理，避免访问异常和 IP 限制问题�?>
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://hexiao2001.github.io/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/1.png">
 <meta property="og:image" content="https://hexiao2001.github.io/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/2.png">
@@ -76,7 +76,7 @@
 
 
 
-<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- 主题依赖的图标库，不要自行修�?-->
 <!-- Do not modify the link that theme dependent icons -->
 
 <link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
@@ -151,9 +151,9 @@
 
 
   
-<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="https://unpkg.com/video.js@6.7.1/dist/video-js.css">
-<script src="https://unpkg.com/video.js@6.7.1/dist/video.js"></script>
-<script src="https://unpkg.com/@videojs/http-streaming@0.9.0/dist/videojs-http-streaming.js"></script></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/libs/videojs2/video-js.css">
+<script src="/libs/videojs2/video.js"></script>
+<script src="/libs/videojs2/videojs-http-streaming.js"></script></head>
 
 
 <body>
@@ -353,9 +353,9 @@
             
               <div class="markdown-body">
                 
-                <p>在校内访问学术网站是不需要代理的，如果通过代理的话每次都会弹出学校账户验证很麻烦，因此有必要将学术网站的访问设置为直连（即不通过代理）<br><img src="/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/1.png" srcset="/img/loading.gif" lazyload alt="__"><br>右键订阅点编辑规则–高级</p>
+                <p>在校内访问学术网站是不需要代理的，如果通过代理的话每次都会弹出学校账户验证很麻烦，因此有必要将学术网站的访问设置为直连（即不通过代理�?br><img src="/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/1.png" srcset="/img/loading.gif" lazyload alt="__"><br>右键订阅点编辑规则–高�?/p>
 <p><img src="/2024/12/02/clash%E8%AE%A2%E9%98%85%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95/2.png" srcset="/img/loading.gif" lazyload alt="__"><br>点击高级</p>
-<p>将里面的代码替换为下面的代码就好了</p>
+<p>将里面的代码替换为下面的代码就好�?/p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">prepend:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN,tuchong.com,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN-SUFFIX,taylorandfrancis.com,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN,dl.acm.org,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN,acm-prod.disqus.com,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN-SUFFIX,sciencedirectassets.com,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN-SUFFIX,readspeaker.com,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN-SUFFIX,webofknowledge.com,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN-KEYWORD,pubmed,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN-KEYWORD,springer,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN-KEYWORD,ieee,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN-KEYWORD,elsevier,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN-KEYWORD,sciencedirect,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN-KEYWORD,nature,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN-KEYWORD,tandfonline,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN-SUFFIX,elsevier.com,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN-SUFFIX,edu.cn,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN-SUFFIX,webofscience.com,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN-SUFFIX,tandfonline.com,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN-SUFFIX,link.springer.com,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN-SUFFIX,onlinelibrary.wiley.com,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN-SUFFIX,sciencedirect.com,DIRECT&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;DOMAIN-SUFFIX,taylorfrancis.com,DIRECT&#x27;</span><br><span class="hljs-attr">append:</span> []<br><span class="hljs-attr">delete:</span> []<br></code></pre></td></tr></table></figure>
                 
               </div>
@@ -446,9 +446,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/12/24/clash%E5%85%A8%E5%B1%80%E6%89%A9%E5%B1%95%E8%84%9A%E6%9C%AC%E9%98%B2%E6%AD%A2%E9%83%A8%E5%88%86%E7%BD%91%E7%AB%99%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E8%AE%BF%E9%97%AE/" title="Clash 全局扩展脚本：智能控制网站代理访问">
+                      <a href="/2024/12/24/clash%E5%85%A8%E5%B1%80%E6%89%A9%E5%B1%95%E8%84%9A%E6%9C%AC%E9%98%B2%E6%AD%A2%E9%83%A8%E5%88%86%E7%BD%91%E7%AB%99%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E8%AE%BF%E9%97%AE/" title="Clash 全局扩展脚本：智能控制网站代理访�?>
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Clash 全局扩展脚本：智能控制网站代理访问</span>
+                        <span class="hidden-mobile">Clash 全局扩展脚本：智能控制网站代理访�?/span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -797,3 +797,4 @@
   </noscript>
 </body>
 </html>
+
