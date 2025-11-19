@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hexiao2001.github.io/2025/11/19/clashvergeDubleMerge/</loc>
+    
+    <lastmod>2025-11-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://hexiao2001.github.io/about/index.html</loc>
     
     <lastmod>2025-11-18</lastmod>
@@ -58,7 +67,7 @@
 
   <url>
     <loc>https://hexiao2001.github.io/</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-11-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -66,63 +75,105 @@
   
   <url>
     <loc>https://hexiao2001.github.io/tags/vpn/</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hexiao2001.github.io/tags/plot/</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hexiao2001.github.io/tags/python/</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hexiao2001.github.io/tags/Community-Detection/</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hexiao2001.github.io/tags/Human-Mobility/</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hexiao2001.github.io/tags/Fuzzy-theory/</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hexiao2001.github.io/tags/Hypergraph/</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hexiao2001.github.io/tags/Urban-Computing/</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hexiao2001.github.io/tags/Python/</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hexiao2001.github.io/tags/Clash-Verge/</loc>
+    <lastmod>2025-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hexiao2001.github.io/tags/%E6%9C%BA%E5%9C%BA%E8%AE%A2%E9%98%85/</loc>
+    <lastmod>2025-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hexiao2001.github.io/tags/AI-%E5%88%86%E6%B5%81/</loc>
+    <lastmod>2025-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hexiao2001.github.io/tags/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86/</loc>
+    <lastmod>2025-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hexiao2001.github.io/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</loc>
+    <lastmod>2025-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hexiao2001.github.io/tags/%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2025-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -131,21 +182,35 @@
   
   <url>
     <loc>https://hexiao2001.github.io/categories/technique/</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hexiao2001.github.io/categories/Research/</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://hexiao2001.github.io/categories/Research/Methodology/</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hexiao2001.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2025-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hexiao2001.github.io/categories/%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2025-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

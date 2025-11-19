@@ -4,6 +4,43 @@
   
   
   <entry>
+    <title>Clash Verge 进阶玩法：双机场合并 + AI 专线精准分流指南</title>
+    <link href="/2025/11/19/clashvergeDubleMerge/"/>
+    <url>/2025/11/19/clashvergeDubleMerge/</url>
+    
+    <content type="html"><![CDATA[<hr><p><strong>背景需求：</strong><br>很多朋友手头都有两个机场订阅：</p><ol><li><strong>主力机场（如pianyijichang）：</strong> 流量大、便宜，台湾&#x2F;香港节点速度快，适合看 YouTube、Netflix 和日常冲浪。</li><li><strong>备用&#x2F;高端机场（如 AIjichangCloud）：</strong> 拥有原生 IP，能解锁各种 AI 限制，适合专门访问 Google AI Studio、Gemini、OpenAI。</li></ol><p><strong>痛点：</strong> 简单的合并订阅会导致节点混杂，如果不手动切换，AI 请求很容易走到台湾节点导致报错（如 Region not supported）。</p><p>今天分享一个在 <strong>Clash Verge (Rev)</strong> 中实现“双订阅合并 + 自动化分流”的完美方案。</p><hr><h3 id="第一步：创建本地配置，合并并标记节点"><a href="#第一步：创建本地配置，合并并标记节点" class="headerlink" title="第一步：创建本地配置，合并并标记节点"></a>第一步：创建本地配置，合并并标记节点</h3><p>要在脚本中区分两个机场，最稳妥的办法是在拉取订阅时给节点加上“前缀标签”。</p><p>新建一个 <strong>Local</strong> 类型的配置，使用 <code>proxy-providers</code> 引入订阅，并利用 <code>override</code> 功能强行加前缀：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">proxy-providers:</span><br>  <span class="hljs-comment"># 机场 A：主力流量</span><br>  <span class="hljs-attr">pianyijichang:</span><br>    <span class="hljs-attr">type:</span> <span class="hljs-string">http</span><br>    <span class="hljs-attr">url:</span> <span class="hljs-string">&quot;你的订阅链接&quot;</span><br>    <span class="hljs-attr">path:</span> <span class="hljs-string">./profiles/pianyijichang.yaml</span><br>    <span class="hljs-attr">override:</span><br>      <span class="hljs-attr">additional-prefix:</span> <span class="hljs-string">&quot;[pianyijichang]&quot;</span> <span class="hljs-comment"># 关键步骤：给它打上标签</span><br><br>  <span class="hljs-comment"># 机场 B：AI 专用</span><br>  <span class="hljs-attr">AIjichang:</span><br>    <span class="hljs-attr">type:</span> <span class="hljs-string">http</span><br>    <span class="hljs-attr">url:</span> <span class="hljs-string">&quot;你的订阅链接&quot;</span><br>    <span class="hljs-attr">path:</span> <span class="hljs-string">./profiles/AIjichang.yaml</span><br>    <span class="hljs-attr">override:</span><br>      <span class="hljs-attr">additional-prefix:</span> <span class="hljs-string">&quot;[AIjichang]&quot;</span>   <span class="hljs-comment"># 关键步骤：给它打上标签</span><br></code></pre></td></tr></table></figure><h3 id="第二步：使用脚本进行正则筛选"><a href="#第二步：使用脚本进行正则筛选" class="headerlink" title="第二步：使用脚本进行正则筛选"></a>第二步：使用脚本进行正则筛选</h3><p>在 Clash Verge 的 <strong>全局扩展脚本</strong> 中，利用正则表达式根据刚才的标签把节点分配给不同的策略组。</p><p><strong>核心逻辑：</strong></p><ul><li><strong>YouTube&#x2F;通用组</strong>：只允许名字里含 <code>[pianyijichang]</code> 的节点进入。</li><li><strong>AI 组</strong>：只允许名字里含 <code>[AIjichang]</code> 且含 <code>美国</code> 的节点进入。</li></ul><p>代码片段（修改 <code>config[&quot;proxy-groups&quot;]</code> 部分）：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// YouTube 或 通用 策略组</span><br>&#123;<br>  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;YouTube&quot;</span>,<br>  <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;select&quot;</span>,<br>  <span class="hljs-comment">// 正则：必须包含 [pianyijichang]</span><br>  <span class="hljs-string">&quot;filter&quot;</span>: <span class="hljs-string">&quot;(?i)\\[pianyijichang\\]&quot;</span>, <br>  ...<br>&#125;,<br><br><span class="hljs-comment">// AI 专用策略组</span><br>&#123;<br>  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;AI&quot;</span>,<br>  <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;url-test&quot;</span>,<br>  <span class="hljs-comment">// 正则：必须包含 [AIjichang] 并且是 美国 节点</span><br>  <span class="hljs-string">&quot;filter&quot;</span>: <span class="hljs-string">&quot;(?i)\\[AIjichang\\].*(美国|US|United States)&quot;</span>, <br>  ...<br>&#125;<br></code></pre></td></tr></table></figure><h3 id="第三步：填补规则漏洞（关键！）"><a href="#第三步：填补规则漏洞（关键！）" class="headerlink" title="第三步：填补规则漏洞（关键！）"></a>第三步：填补规则漏洞（关键！）</h3><p>很多规则集（Rule Provider）对 Google AI Studio 的覆盖并不完全。你会发现主页走了 AI 节点，但后台 API 请求（<code>alkalimakersuite</code> 等）却走了普通节点，导致跨区报错。</p><p>需要在脚本的 <code>myProxyRules</code> 中手动补全这些“漏网之鱼”：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> myProxyRules = [<br>  <span class="hljs-comment">// 强制 Google AI Studio 后端走 AI 组</span><br>  <span class="hljs-string">&quot;DOMAIN-KEYWORD,alkalimakersuite,AI&quot;</span>,<br>  <span class="hljs-string">&quot;DOMAIN-KEYWORD,developerprofiles,AI&quot;</span>,<br>  <span class="hljs-comment">// 强制生成式 AI API</span><br>  <span class="hljs-string">&quot;DOMAIN-SUFFIX,generativelanguage.googleapis.com,AI&quot;</span>,<br>  <span class="hljs-comment">// 强制 Gemini/Bard</span><br>  <span class="hljs-string">&quot;DOMAIN-SUFFIX,gemini.google.com,AI&quot;</span>,<br>  <span class="hljs-string">&quot;DOMAIN-SUFFIX,bard.google.com,AI&quot;</span><br>];<br></code></pre></td></tr></table></figure><h3 id="效果总结"><a href="#效果总结" class="headerlink" title="效果总结"></a>效果总结</h3><p>配置完成后，你的 Clash 面板将非常清爽：</p><ul><li>看 YouTube 自动走pianyijichang（台湾），速度快且省钱。</li><li>一旦打开 aistudio.google.com 或调用 Gemini API，自动无感切换到 AIjichangCloud（美国），极其稳定。</li><li>再也不用手动切来切去了！</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+      <category>网络</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Clash Verge</tag>
+      
+      <tag>机场订阅</tag>
+      
+      <tag>AI 分流</tag>
+      
+      <tag>网络代理</tag>
+      
+      <tag>科学上网</tag>
+      
+      <tag>教程</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>HEProOE: Hyperedge-Enhanced Spatial Community Detection Method</title>
     <link href="/2025/11/17/HEProOE/"/>
     <url>/2025/11/17/HEProOE/</url>
