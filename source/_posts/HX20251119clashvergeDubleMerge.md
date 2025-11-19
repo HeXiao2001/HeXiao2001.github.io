@@ -1,14 +1,18 @@
 ---
 title: Clash Verge 进阶玩法：双机场合并 + AI 专线精准分流指南
-tags: [Clash Verge, 机场订阅, AI 分流, 网络代理, 科学上网, 教程]
-categories: [技术, 网络]
+tags:
+  - vpn
+categories:
+  - technique
+  - vpn
 poster:
   topic: 双机场合并与AI精准分流
   headline: Clash Verge 进阶玩法
   caption: 自动化分流，告别手动切换
   color: blue
-date: 2025-11-19 19:24:45
 description: 本文介绍如何在 Clash Verge 中合并双机场订阅，实现自动化分流，确保 AI 服务稳定访问。
+abbrlink: 45371
+date: 2025-11-19 19:24:45
 cover:
 banner:
 sticky:
