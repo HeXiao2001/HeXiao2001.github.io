@@ -13,26 +13,16 @@
     
     <categories>
       
-      <category>技术</category>
+      <category>technique</category>
       
-      <category>网络</category>
+      <category>vpn</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>Clash Verge</tag>
-      
-      <tag>机场订阅</tag>
-      
-      <tag>AI 分流</tag>
-      
-      <tag>网络代理</tag>
-      
-      <tag>科学上网</tag>
-      
-      <tag>教程</tag>
+      <tag>vpn</tag>
       
     </tags>
     
@@ -59,15 +49,15 @@
     
     <tags>
       
-      <tag>Community Detection</tag>
-      
       <tag>Human Mobility</tag>
       
       <tag>Fuzzy theory</tag>
       
-      <tag>Hypergraph</tag>
+      <tag>Community Detection</tag>
       
       <tag>Urban Computing</tag>
+      
+      <tag>Hypergraph</tag>
       
     </tags>
     
@@ -94,15 +84,15 @@
     
     <tags>
       
-      <tag>Community Detection</tag>
-      
       <tag>Human Mobility</tag>
       
       <tag>Fuzzy theory</tag>
       
-      <tag>Urban Computing</tag>
+      <tag>Community Detection</tag>
       
       <tag>Python</tag>
+      
+      <tag>Urban Computing</tag>
       
     </tags>
     
@@ -121,6 +111,8 @@
     <categories>
       
       <category>technique</category>
+      
+      <category>vpn</category>
       
     </categories>
     
@@ -146,6 +138,8 @@
     <categories>
       
       <category>technique</category>
+      
+      <category>vpn</category>
       
     </categories>
     
