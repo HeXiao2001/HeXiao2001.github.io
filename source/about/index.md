@@ -36,7 +36,7 @@ Please don't hesitate to reach out if you have any questions or collaboration id
 ### **PUBLICATIONS**
 
 - **He, X.**, Liu, B., Shi, Y., Tang, Z., Deng, M., & Tang, J. (2025). [A probabilistic optimal estimation method for detecting spatial fuzzy communities](https://hexiao2001.github.io/2025/04/05/ProOE/). *International Journal of Geographical Information Science*, 1–33. [https://doi.org/10.1080/13658816.2025.2483850](https://doi.org/10.1080/13658816.2025.2483850)    
-- **He, X.**, Tang, Z., Liu, B., Duan, J., & Deng, M. (in press). [HEProOE: A Hyperedge Enhanced Probabilistic Optimal Estimation method for detecting Spatial Fuzzy Communities](https://hexiao2001.github.io/2025/11/17/HEProOE/). *Scientific Reports*. 
+- **He, X.**, Tang, Z., Liu, B., Duan, J., & Deng, M. (2025). [HEProOE: A Hyperedge Enhanced Probabilistic Optimal Estimation method for detecting Spatial Fuzzy Communities](https://hexiao2001.github.io/2025/11/17/HEProOE/). *Scientific Reports*. 15 (1), 41794. [https://doi.org/10.1038/s41598-025-25676-z](https://doi.org/10.1038/s41598-025-25676-z)
 - Zhao, B., **He, X.**, Liu, B., Tang, J., Deng, M., & Liu, H. (2023). Detecting urban commercial districts by fusing points of interest and population heat data with region-growing algorithms. *ISPRS International Journal of Geo-Information*, 12(3), 96. [https://doi.org/10.3390/ijgi12030096](https://doi.org/10.3390/ijgi12030096)
 - Liu, B., Tang, Z., Deng, M., Shi, Y., **He, X.**, & Huang, B. (2024). Estimation of travel flux between urban blocks by combining spatio-temporal and purpose correlation. *Journal of Transport Geography*, 116, 103836. [https://doi.org/10.1016/j.jtrangeo.2024.103836](https://doi.org/10.1016/j.jtrangeo.2024.103836)
 
