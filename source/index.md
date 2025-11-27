@@ -3,6 +3,7 @@ title: Academic Home
 layout: page
 menu_id: home
 permalink: /
+comments: false
 ---
 
 <div style="text-align: center; margin-bottom: 40px;">

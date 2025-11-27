@@ -6,7 +6,7 @@ scheme: Mist
 menu:
   Home: / || home
   About: /about/ || user
-  News: /tags/News/ || newspaper-o
+  News: /news/ || newspaper-o
   Blogs: /tags/Blogs/ || book
   Archives: /archives/ || archive
 
@@ -65,3 +65,20 @@ giscus:
 # Table of Contents
 toc:
   enable: false
+
+# Favicon
+favicon:
+  small: /images/me.jpg
+  medium: /images/me.jpg
+  apple_touch_icon: /images/me.jpg
+  safari_pinned_tab: /images/me.jpg
+
+# Motion
+motion:
+  enable: false
+
+# FancyBox
+fancybox: true
+
+# Lazyload
+lazyload: true
