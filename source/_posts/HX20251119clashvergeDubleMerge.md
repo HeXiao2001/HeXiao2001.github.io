@@ -1,6 +1,7 @@
 ---
 title: Clash Verge 进阶玩法：双机场合并 + AI 专线精准分流指南
 tags:
+  - Blogs
   - vpn
 categories:
   - technique

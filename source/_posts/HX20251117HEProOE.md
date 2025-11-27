@@ -1,6 +1,7 @@
 ---
 title: "HEProOE: Hyperedge-Enhanced Spatial Community Detection Method"
 tags:
+  - News
   - Community Detection
   - Human Mobility
   - Fuzzy theory

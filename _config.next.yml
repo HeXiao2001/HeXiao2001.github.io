@@ -1,0 +1,67 @@
+# Hexo Configuration
+# Scheme
+scheme: Mist
+
+# Menu
+menu:
+  Home: / || home
+  About: /about/ || user
+  News: /tags/News/ || newspaper-o
+  Blogs: /tags/Blogs/ || book
+  Archives: /archives/ || archive
+
+# Sidebar
+sidebar:
+  position: right
+  display: hide
+  padding: 18
+  offset: 12
+
+# Avatar
+avatar:
+  url: /images/me.jpg
+  rounded: true
+  opacity: 1
+  rotated: false
+
+# Social Links (Placeholder - user can update)
+social:
+  GitHub: https://github.com/HeXiao2001 || github
+  # E-Mail: mailto:yourname@gmail.com || envelope
+
+# Custom Files
+custom_file_path:
+  head: source/_data/head.njk
+  # postBodyEnd: source/_data/post-body-end.njk
+  style: source/_data/styles.styl
+
+# Footer
+footer:
+  since: 2021
+  icon:
+    name: user
+  copyright: Xiao He
+
+# Local Search
+local_search:
+  enable: true
+
+# Giscus
+# https://github.com/next-theme/hexo-next-giscus
+giscus:
+  enable: true
+  repo: hexiao2001/hexiao2001.github.io
+  repo_id: R_kgDONXk1iQ
+  category: Announcements
+  category_id: DIC_kwDONXk1ic4CkzH5
+  mapping: pathname
+  reactions_enabled: 1
+  emit_metadata: 0
+  theme: light
+  lang: zh-CN
+  input_position: top
+  loading: lazy
+
+# Table of Contents
+toc:
+  enable: false

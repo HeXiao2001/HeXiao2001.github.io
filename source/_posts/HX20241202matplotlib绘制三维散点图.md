@@ -1,6 +1,7 @@
 ---
 title: Matplotlib 绘制三维散点图与包围椭球及核密度分析
 tags:
+  - Blogs
   - plot
   - python
 categories:

@@ -70,7 +70,7 @@ prismjs:
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ''
+  path: 'blog'
   per_page: 10
   order_by: -date
 
@@ -110,7 +110,7 @@ plugins:
   - hexo-tag-video
 
 ## Themes: https://hexo.io/themes/
-theme: fluid
+theme: next
 
 # Submit URLs to search engines
 # Note: Using IndexNow protocol for automatic URL submission
@@ -146,6 +146,7 @@ inject:
     - <link rel="stylesheet" href="//s1.hdslb.com/bfs/static/jinkela/long/font/regular.css" media="all" onload="this.media='all'" onerror="this.onerror=null;" />
     - <link rel="stylesheet" href="//s1.hdslb.com/bfs/static/jinkela/long/font/medium.css" media="all" onload="this.media='all'" onerror="this.onerror=null;" />
     - <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;t.onerror=function(){console.log("Clarity blocked")};y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "u7szbkfie3");</script>
+    - <link rel="stylesheet" href="//at.alicdn.com/t/c/font_5068291_4d9l4pnhx0v.css" />
 
 sitemap:
   path: sitemap.xml

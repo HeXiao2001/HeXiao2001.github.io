@@ -1,0 +1,55 @@
+// Custom Styles
+
+// Background image
+body {
+  background: url(/images/researchinterest.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+// Make content readable against the background
+.main-inner {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+// Adjust header transparency if needed
+.header-inner {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 0 0 10px 10px;
+  padding-bottom: 20px;
+}
+
+// Width adjustment
+.header-inner, .main-inner, .footer-inner {
+  width: 90%;
+  max-width: 90%; 
+}
+
+// Hide sidebar toggle button on pages where sidebar is hidden
+.sidebar-toggle {
+  display: none;
+}
+
+// Hide the default footer background if it clashes
+.footer {
+  color: #333;
+  background: rgba(255, 255, 255, 0.8);
+  margin-top: 20px;
+  padding: 20px 0;
+}
+
+// Hide the archive count header "Um..! X posts in total."
+.archive .collection-title {
+  display: none !important;
+}
+
+// Ensure iconfont works
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: inherit;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
