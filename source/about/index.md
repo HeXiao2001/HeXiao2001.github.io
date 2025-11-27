@@ -1,5 +1,5 @@
 ---
-title: About Me
+title:  
 layout: page
 comment: True
 ---
@@ -10,31 +10,31 @@ comment: True
   <p style="color: #666;">Ph.D. Student in Geographic Information Science</p>
   <div style="margin-top: 10px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
     <a href="mailto:hexiaoemail@csu.edu.cn" title="Edu email" style="color: #333; text-decoration: none;">
-      <i class="iconfont icon-youxiang" style="font-size: 24px;"></i>
+      <i class="fa-solid fa-envelope-open-text" style="font-size: 24px;"></i>
     </a>
     <a href="https://github.com/HeXiao2001" target="_blank" title="GitHub" style="color: #333; text-decoration: none;">
-      <i class="iconfont icon-github-fill" style="font-size: 24px;"></i>
+      <i class="fa-brands fa-github" style="font-size: 24px;"></i>
     </a>
     <a href="https://orcid.org/0000-0002-3116-6017" target="_blank" title="ORCID" style="color: #333; text-decoration: none;">
-      <i class="iconfont icon-orcid1" style="font-size: 24px;"></i>
+      <i class="fa-brands fa-orcid" style="font-size: 24px;"></i>
     </a>
     <a href="https://scholar.google.com/citations?user=rDEquOIAAAAJ" target="_blank" title="Google Scholar" style="color: #333; text-decoration: none;">
-      <i class="iconfont icon-google-scholar" style="font-size: 24px;"></i>
+      <i class="fa-brands fa-google-scholar" style="font-size: 24px;"></i>
     </a>
     <a href="https://www.researchgate.net/profile/Xiao-He-62" target="_blank" title="ResearchGate" style="color: #333; text-decoration: none;">
-      <i class="iconfont icon-researchgate_" style="font-size: 24px;"></i>
+      <i class="fa-brands fa-researchgate" style="font-size: 24px;"></i>
     </a>
     <a href="https://hexiao2001.github.io/about/" title="Resume" style="color: #333; text-decoration: none;">
-      <i class="iconfont icon-fengexian" style="font-size: 24px;"></i>
+      <i class="fa-solid fa-file-lines" style="font-size: 24px;"></i>
     </a>
     <a href="mailto:xiao.he2001@outlook.com" title="Personal email" style="color: #333; text-decoration: none;">
-      <i class="iconfont icon-mail" style="font-size: 24px;"></i>
+      <i class="fa-solid fa-envelope" style="font-size: 24px;"></i>
     </a>
     <a href="https://space.bilibili.com/329065857" target="_blank" title="BiliBili" style="color: #333; text-decoration: none;">
-      <i class="iconfont icon-bilibili1" style="font-size: 24px;"></i>
+      <i class="fa-brands fa-bilibili" style="font-size: 24px;"></i>
     </a>
     <a href="https://hexiao2001.tuchong.com/posts" target="_blank" title="tuchong" style="color: #333; text-decoration: none;">
-      <i class="iconfont icon-images" style="font-size: 24px;"></i>
+      <i class="fa-solid fa-camera" style="font-size: 24px;"></i>
     </a>
   </div>
 </div>

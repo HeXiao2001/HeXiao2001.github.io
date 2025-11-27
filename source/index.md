@@ -1,5 +1,5 @@
 ---
-title: Academic Home
+title:  
 layout: page
 menu_id: home
 permalink: /
@@ -10,7 +10,7 @@ comments: false
   <img src="/images/researchinterest.jpg" alt="Research Interest" style="width: 100%; max-width: 900px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
 </div>
 
-## Introduction
+## Xiao He
 
 I am a Ph.D. candidate specializing in **Urban Computing** and **Complex Network Analysis**. My research focuses on understanding the dynamics of human mobility and the structure of urban spatial networks.
 
