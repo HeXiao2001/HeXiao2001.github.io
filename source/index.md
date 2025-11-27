@@ -1,9 +1,11 @@
 ---
-title:  
 layout: page
 menu_id: home
 permalink: /
-comments: false
+comment: true
+toc:
+  enable: false
+abbrlink: 1739
 ---
 
 <div style="text-align: center; margin-bottom: 40px;">

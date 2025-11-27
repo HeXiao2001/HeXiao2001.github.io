@@ -12,8 +12,8 @@ menu:
 
 # Sidebar
 sidebar:
-  position: right
-  display: hide
+  position: left
+  display: post
   padding: 18
   offset: 12
 
@@ -64,7 +64,11 @@ giscus:
 
 # Table of Contents
 toc:
-  enable: false
+  enable: true
+  number: true
+  wrap: false
+  expand_all: false
+  max_depth: 6
 
 # Favicon
 favicon:
