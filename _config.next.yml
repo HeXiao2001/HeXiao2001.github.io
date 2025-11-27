@@ -6,8 +6,8 @@ scheme: Mist
 menu:
   Home: / || home
   About: /about/ || user
-  News: /news/ || newspaper-o
-  Blogs: /tags/Blogs/ || book
+  Publications: /publications/ || book
+  Blogs: /tags/Blogs/ || edit
   Archives: /archives/ || archive
 
 # Sidebar

@@ -1,4 +1,4 @@
-hexo.extend.generator.register('news', function(locals) {
+hexo.extend.generator.register('publications', function(locals) {
   var newsTag = locals.tags.findOne({name: 'News'});
   var posts = [];
   
@@ -6,21 +6,25 @@ hexo.extend.generator.register('news', function(locals) {
     posts = newsTag.posts.sort('-date').toArray();
   }
 
-  var mappedPosts = posts.map(function(post) {
+  var mappedPosts = posts.map(function(post, index) {
     // Use Object.create to shadow properties without modifying the original post
     var newPost = Object.create(post);
     
+    // Add numbering to title (Reverse order: Newest gets highest number)
+    newPost.title = '[' + (posts.length - index) + '] ' + post.title;
+    
     var coverImage = '';
+    var imgStyle = 'width: 200px; max-width: 100%; height: auto; margin-bottom: 10px; border-radius: 5px; display: block; box-shadow: 0 2px 5px rgba(0,0,0,0.1);';
     
     // 1. Check for 'cover' in front-matter
     if (post.cover) {
        if (post.cover.match(/^https?:\/\//)) {
-         coverImage = '<img src="' + post.cover + '" style="width:100%; max-width: 100%; margin-bottom: 20px; border-radius: 5px; display: block;">';
+         coverImage = '<img src="' + post.cover + '" style="' + imgStyle + '">';
        } else {
          var root = hexo.config.root || '/';
          if (!root.endsWith('/')) root += '/';
          var path = post.path; 
-         coverImage = '<img src="' + root + path + post.cover + '" style="width:100%; max-width: 100%; margin-bottom: 20px; border-radius: 5px; display: block;">';
+         coverImage = '<img src="' + root + path + post.cover + '" style="' + imgStyle + '">';
        }
     } 
     // 2. If no cover, try to find first image in content
@@ -41,7 +45,7 @@ hexo.extend.generator.register('news', function(locals) {
              var path = post.path;
              src = root + path + src;
          }
-         coverImage = '<img src="' + src + '" style="width:100%; max-width: 100%; margin-bottom: 20px; border-radius: 5px; display: block;">';
+         coverImage = '<img src="' + src + '" style="' + imgStyle + '">';
       }
     }
 
@@ -50,7 +54,11 @@ hexo.extend.generator.register('news', function(locals) {
         if (post.description) {
             text = '<p>' + text + '</p>';
         }
-        newPost.excerpt = coverImage + text;
+        // Flex layout: Image Left, Text Right
+        newPost.excerpt = '<div style="display: flex; align-items: flex-start; gap: 20px;">' + 
+                          '<div style="flex-shrink: 0;">' + coverImage + '</div>' + 
+                          '<div style="flex-grow: 1;">' + text + '</div>' + 
+                          '</div>';
         newPost.description = ''; 
     }
     
@@ -66,20 +74,20 @@ hexo.extend.generator.register('news', function(locals) {
   };
 
   return {
-    path: 'news/index.html',
+    path: 'publications/index.html',
     data: {
       posts: postsProxy,
-      title: 'News',
+      title: 'Publications',
       total: 1,
       current: 1,
-      base: '/news/',
+      base: '/publications/',
       prev: 0,
       next: 0,
       is_home: false,
       is_archive: false,
       is_category: false,
       is_tag: false,
-      is_news: true
+      is_news: false
     },
     layout: ['index']
   };

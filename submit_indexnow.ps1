@@ -7,16 +7,28 @@ $keyLocation = "https://hexiao2001.github.io/dbcab8852f48435cb472ca5c0913afd2.tx
 
 # Check if submit_urls.txt exists
 $urlFile = "public\submit_urls.txt"
-if (-not (Test-Path $urlFile)) {
-    Write-Host "✗ $urlFile not found. Please run 'npx hexo g' first." -ForegroundColor Red
-    exit 1
+$urls = @()
+
+# Always include these core pages
+$coreUrls = @(
+    "https://hexiao2001.github.io/",
+    "https://hexiao2001.github.io/about/",
+    "https://hexiao2001.github.io/publications/"
+)
+
+if (Test-Path $urlFile) {
+    # Read URLs from submit_urls.txt
+    $fileUrls = Get-Content $urlFile | Where-Object { $_ -match "^https?://" }
+    $urls += $fileUrls
+} else {
+    Write-Host "⚠ $urlFile not found. Only submitting core pages." -ForegroundColor Yellow
 }
 
-# Read URLs from submit_urls.txt
-$urls = Get-Content $urlFile | Where-Object { $_ -match "^https?://" }
+# Add core URLs and remove duplicates
+$urls = $urls + $coreUrls | Select-Object -Unique
 
 if ($urls.Count -eq 0) {
-    Write-Host "✗ No URLs found in submit_urls.txt" -ForegroundColor Red
+    Write-Host "✗ No URLs found to submit" -ForegroundColor Red
     exit 1
 }
 
