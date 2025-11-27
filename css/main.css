@@ -346,13 +346,15 @@ td {
   margin-top: 4px;
 }
 .toggle.toggle-arrow :first-child {
+  left: 50%;
   top: 2px;
-  transform: rotate(-45deg);
+  transform: rotate(45deg);
   width: 50%;
 }
 .toggle.toggle-arrow :last-child {
+  left: 50%;
   top: -2px;
-  transform: rotate(45deg);
+  transform: rotate(-45deg);
   width: 50%;
 }
 .toggle.toggle-close :nth-child(2) {
@@ -360,11 +362,11 @@ td {
 }
 .toggle.toggle-close :first-child {
   top: 6px;
-  transform: rotate(-45deg);
+  transform: rotate(45deg);
 }
 .toggle.toggle-close :last-child {
   top: -6px;
-  transform: rotate(45deg);
+  transform: rotate(-45deg);
 }
 pre code.hljs {
   display: block;
@@ -1196,10 +1198,10 @@ pre code {
   visibility: hidden;
 }
 .sidebar {
-  right: -320px;
+  left: -320px;
 }
 .sidebar-active .sidebar {
-  right: 0;
+  left: 0;
 }
 .sidebar {
   background: #222;
@@ -1233,7 +1235,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #2ee7ff;
+  background: #710150;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -1458,11 +1460,11 @@ pre code {
   opacity: 0.8;
   position: fixed;
   z-index: 30;
-  right: 30px;
+  left: 30px;
 }
 @media (max-width: 991px) {
   .sidebar-toggle {
-    right: 20px;
+    left: 20px;
   }
 }
 .sidebar-toggle:hover {
@@ -1478,13 +1480,15 @@ pre code {
 }
 @media (any-hover: hover) {
   body:not(.sidebar-active) .sidebar-toggle:hover :first-child {
+    left: 50%;
     top: 2px;
-    transform: rotate(-45deg);
+    transform: rotate(45deg);
     width: 50%;
   }
   body:not(.sidebar-active) .sidebar-toggle:hover :last-child {
+    left: 50%;
     top: -2px;
-    transform: rotate(45deg);
+    transform: rotate(-45deg);
     width: 50%;
   }
 }
@@ -1493,11 +1497,59 @@ pre code {
 }
 .sidebar-active .sidebar-toggle :first-child {
   top: 6px;
-  transform: rotate(-45deg);
+  transform: rotate(45deg);
 }
 .sidebar-active .sidebar-toggle :last-child {
   top: -6px;
-  transform: rotate(45deg);
+  transform: rotate(-45deg);
+}
+.post-toc {
+  font-size: 0.875em;
+}
+.post-toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0 2px 0 10px;
+  text-align: left;
+}
+.post-toc ol > :last-child {
+  margin-bottom: 5px;
+}
+.post-toc ol > ol {
+  padding-left: 0;
+}
+.post-toc ol a {
+  transition: all 0.2s ease-in-out;
+}
+.post-toc .nav-item {
+  line-height: 1.8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.post-toc .nav .nav-child {
+  --height: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition-property: height, opacity, visibility;
+  transition: 0.2s ease-in-out;
+  visibility: hidden;
+}
+.post-toc .nav .active > .nav-child {
+  height: var(--height, auto);
+  opacity: 1;
+  visibility: unset;
+}
+.post-toc .nav .active > a {
+  border-bottom-color: #87daff;
+  color: #87daff;
+}
+.post-toc .nav .active-current > a {
+  color: #87daff;
+}
+.post-toc .nav .active-current > a:hover {
+  color: #87daff;
 }
 .site-state {
   display: flex;
@@ -1610,7 +1662,7 @@ pre code {
   opacity: 0.8;
   position: fixed;
   z-index: 30;
-  right: 30px;
+  left: 30px;
 }
 .back-to-top span {
   margin-right: 8px;
@@ -1622,7 +1674,7 @@ pre code {
 }
 @media (max-width: 991px) {
   .back-to-top {
-    right: 20px;
+    left: 20px;
   }
 }
 .back-to-top:hover {
@@ -2643,10 +2695,10 @@ header.header {
     display: none;
   }
   .sidebar-active {
-    padding-right: 320px;
+    padding-left: 320px;
   }
   .sidebar-active .footer-fixed {
-    right: 320px;
+    left: 320px;
   }
 }
 .sub-menu {
@@ -2689,7 +2741,9 @@ body::before {
 .main-inner,
 .footer-inner {
   width: 90%;
-  max-width: 90%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .sidebar-toggle {
   display: none;
@@ -2709,4 +2763,26 @@ body::before {
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.post-body img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+@media (min-width: 992px) {
+  .post-body img {
+    max-width: 600px;
+  }
+}
+.sidebar-nav {
+  display: none !important;
+}
+.site-overview-wrap {
+  display: none !important;
+}
+.sidebar-panel-container {
+  padding-top: 0 !important;
 }
