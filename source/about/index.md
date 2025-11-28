@@ -99,11 +99,14 @@ Please don't hesitate to reach out if you have any questions or collaboration id
 **2024 National Doctoral Forum for Surveying, Mapping, and Remote Sensing Disciplines** | Zhuhai, China
 *Oral Presentation: A probabilistic optimal estimation method for detecting spatial fuzzy communities* | Nov. 2024
 
+**The 20th National Conference on Theory and Methods of GIS** | Xiamen, China	
+*Oral Presentation: GeoRule Regression: A Framework for Quantifying Spatial Synergy in Geographic Feature Combinations.* | Nov. 2025	
+
 ---
 
 ### **ADDITIONAL INFORMATION**
 
-- **Languages**: Mandarin (Native), English (Conversational)
+- **Languages**: Mandarin (Native), English (Conversational/ CET-6, CET-4)
 - **Intellectual Property**: One Chinese Invention Patent (Granted, First Student Inventor)
 - **Technical Skills**: Python (GeoPandas, PyTorch, Polars), ArcGIS, QGIS, SQL, AI (Coding Agents, Knowledge Base)
 - **Interests**: Badminton, traveling, reading, table tennis, running, photography
