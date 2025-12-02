@@ -135,7 +135,7 @@ hexo_submit_urls_to_search_engine:
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   - type: git
-    repository: git@github.com:HeXiao2001/HeXiao2001.github.io.git
+    repository: https://github.com/HeXiao2001/HeXiao2001.github.io.git
     branch: master
 
 
