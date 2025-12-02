@@ -13,9 +13,7 @@ abbrlink: 1739
 </div>
 
 ## Xiao He
-
-I am a Ph.D. candidate specializing in **Urban Computing** and **Complex Network Analysis**. My research focuses on understanding the dynamics of human mobility and the structure of urban spatial networks.
-
-I am passionate about applying **Fuzzy Theory** and **Hypergraph Learning** to solve real-world problems in urban planning and transportation. My recent work involves developing novel community detection methods that respect the semantic integrity of urban regions.
-
-Feel free to explore my [News](/tags/News/) for latest updates or check out my [Blogs](/tags/Blogs/) for technical tutorials and thoughts.
+I am a Ph.D. candidate in Geographic Information Science at Central South University. My research lies at the intersection of GeoAI, Complexity Science, and Urban Computing.
+Moving beyond static descriptions of urban forms, I am passionate about decoding the generative mechanisms of spatial synergy. My work explores how macroscopic urban structures (e.g., polycentricity) emerge from microscopic human mobility and agent-based interactions.
+Technically, I specialize in bridging probabilistic modeling (e.g., Fuzzy Theory) with Network (e.g., Hypergraph) to solve complex geospatial problems.
+Feel free to check my [Publications](/publications/) for my latest work on fuzzy community detection, or explore my [Blogs](/tags/Blogs/) for technical insights.
